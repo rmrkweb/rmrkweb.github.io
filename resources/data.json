@@ -1,0 +1,102 @@
+{
+  "name": "Reymark Aguila",
+  "role": "Full Stack Developer",
+  "contact": "+639668862186 | +639515853134",
+  "about": "Currently working as <strong>Web Developer</strong> under <strong>HR - Learning And Motivation Team</strong> in <strong>Kamal Oman Jamjoom Services Philippine, Inc</strong>. Handling the company's Online <strong>Learning Management System (LMS)</strong> and <strong>Performance Appraisal Platform.</strong>",
+  "facebook": "https://fb.com/aguila.reymark",
+  "linkedin": "https://linkedin.com/in/reymark-aguila",
+  "github": "https://linkedin.com/in/reymark-aguila",
+  "experience": [
+    {
+      "id": 1,
+      "company": "IBIDEN Philippines, Inc.",
+      "role": "Lead System Developer",
+      "dtStart": "May 2013",
+      "dtEnd": "March 2018",
+      "loc": "FPIP Brgy. Sta. Anastacia, Sto. Tomas, Batangas"
+    },
+    {
+      "id": 2,
+      "company": "Kamal Osman Jamjoom Group",
+      "role": "Web Developer",
+      "dtStart": "June 2018",
+      "dtEnd": "December 2019",
+      "loc": "Dubai, United Arab Emirates"
+    },
+    {
+      "id": 3,
+      "company": "Kamal Osman Jamjoom Services Philippines Inc.",
+      "role": "Web Developer",
+      "dtStart": "December 2019",
+      "dtEnd": "Present",
+      "loc": "Makati, NCR, Philippines"
+    }
+  ],
+  "skills": [
+    "<i class=\"mdi mdi-18px me-1 mdi-microsoft-visual-studio\" style=\"line-height:1;\"></i>Front-end and Back-end Development",
+    "<i class=\"mdi mdi-18px me-1 mdi-dot-net\" style=\"line-height:1;\"></i>ASP.Net Core",
+    "<i class=\"mdi mdi-18px me-1 mdi-dot-net\" style=\"line-height:1;\"></i>ASP MVC Net Framework",
+    "<i class=\"mdi mdi-18px me-1 mdi-language-csharp\" style=\"line-height:1;\"></i>.Net",
+    "<i class=\"mdi mdi-18px me-1 mdi-database-check\" style=\"line-height:1;\"></i>MS SQL Server",
+    "<i class=\"mdi mdi-18px me-1 mdi-database-check\" style=\"line-height:1;\"></i>My SQL",
+    "<i class=\"mdi mdi-18px me-1 mdi-angularjs\" style=\"line-height:1;\"></i>AngularJS",
+    "<i class=\"mdi mdi-18px me-1 mdi-jquery\" style=\"line-height:1;\"></i>JQuery",
+    "<i class=\"mdi mdi-18px me-1 mdi-nodejs\" style=\"line-height:1;\"></i>Node.JS",
+    "<i class=\"mdi mdi-18px me-1 mdi-bootstrap\" style=\"line-height:1;\"></i>Bootstrap 4 & 5",
+    "<i class=\"mdi mdi-18px me-1 mdi-language-html5\" style=\"line-height:1;\"></i>HTML5",
+    "<i class=\"mdi mdi-18px me-1 mdi-language-javascript\" style=\"line-height:1;\"></i>Javascript",
+    "<i class=\"mdi mdi-18px me-1 mdi-sass\" style=\"line-height:1;\"></i>SASS and CSS",
+    "<i class=\"mdi mdi-18px me-1 mdi-adobe\" style=\"line-height:1;\"></i>Adobe CC"
+  ],
+  "accomplishments": [
+    {
+      "id": 1,
+      "title": "Web Design Competition",
+      "description":  "Choosen as Top 3 for the Web Design Competition held in Lipa City, Batangas last December 2020."
+    },
+    {
+      "id": 2,
+      "title": "Department Website",
+      "description":  "Built and maintain the Department Website that includes the access for Learning Online Courses and Resources as well as the management for sending of sms and email adverts as communication channel for the company."
+    },
+    {
+      "id": 3,
+      "title": "Award and Recognition Web Application",
+      "description":  "Build the platform for the company's biggest awarding event. It includes the awards and prizes information as well as the online nomination and voting for the specific award category."
+    },
+    {
+      "id": 4,
+      "title": "Annual Appraisal Platform",
+      "description":  "Created and maintain the web application for the company's annual performance appraisal. It is used to measure the yearly performance of the employees based on their accomplished tasks / goals."
+    },
+    {
+      "id": 5,
+      "title": "Online Learning Management System",
+      "description":  "Designed and Developed the Company's Online LMS which includes all the online courses and learning resources for all the employees. It track the progress of the employees and integrates to the appraisal system as one of the criteria for sel-development."
+    }
+  ],
+  "contactDes": "For any project commisions, new opportunities and any business matter, you can reach me through these media:",
+  "lastUpdate": "June, 2022",
+  "contactInfo": [
+    {
+      "contact": "aguila.reymark@gmail.com",
+      "icon": "mdi-email",
+      "link": "mailto:aguila.reymark@gmail.com"
+    },
+    {
+      "contact": "+639668862186 | +639515853134",
+      "icon": "mdi-phone",
+      "link": "#"
+    },
+    {
+      "contact": "WhatsApp",
+      "icon": "mdi-whatsapp",
+      "link": "https://wa.me/639668862186"
+    },
+    {
+      "contact": "Messenger",
+      "icon": "mdi-facebook-messenger",
+      "link": "https://m.me/aguila.reymark"
+    }
+  ]
+}
