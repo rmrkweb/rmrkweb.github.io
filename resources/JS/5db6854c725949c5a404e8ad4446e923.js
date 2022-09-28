@@ -432,8 +432,8 @@ app.controller('mainCtrl',
                 i = new Date(i);
                 k = j;
                 j = j === "Present" ? new Date() : new Date(j);
-                ret = moment(i).from(moment(j));
-                return k !== "Present" ? ret.replace(" ago", ""): ret;
+                ret = moment(i).from(moment(j),true);
+                return  ret;
             };
             $s.rateSummary = function (i, j) {
                 if (i >= j) {
