@@ -2,7 +2,7 @@
   "name": "Reymark Aguila",
   "role": "Full Stack Developer",
   "contact": "+639668862186 | +639515853134",
-  "about": "Solution-driven <strong>web developer</strong> adept at contributing to highly collaborative work environment and finding solutions.<br/>Proven experience developing consumer-focused websites using HTML, CSS, AngularJS and C# .Net Core. Good knowledge of the best practices for web design, user experience, and speed.",
+  "about": "Solution-driven <strong>web developer</strong> adept at contributing to highly collaborative work environment and finding solutions.<br/>Proven experience developing consumer-focused websites using HTML, CSS, AngularJS and C# .Net Core.<br/>Good knowledge of the best practices for web design, user experience, and speed.",
   "facebook": "https://fb.com/aguila.reymark",
   "linkedin": "https://linkedin.com/in/reymark-aguila",
   "github": "https://github.com/rmrkweb",
@@ -33,7 +33,7 @@
     },
     {
       "id": 4,
-      "company": "ConnectOS.",
+      "company": "ConnectOS",
       "role": "Senior Frontend Developer",
       "dtStart": "January 2023",
       "dtEnd": "Present",
