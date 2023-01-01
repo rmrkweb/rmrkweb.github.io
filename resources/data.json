@@ -2,7 +2,7 @@
   "name": "Reymark Aguila",
   "role": "Full Stack Developer",
   "contact": "+639668862186 | +639515853134",
-  "about": "Currently working as <strong>Web Developer</strong> under <strong>HR - Learning And Motivation Team</strong> in <strong>Kamal Oman Jamjoom Services Philippine, Inc</strong>. Handling the company's Online <strong>Learning Management System (LMS)</strong> and <strong>Performance Appraisal Platform.</strong>",
+  "about": "Solution-driven <strong>web developer</strong> adept at contributing to highly collaborative work environment and finding solutions.<br/>Proven experience developing consumer-focused websites using HTML, CSS, AngularJS and C# .Net Core. Good knowledge of the best practices for web design, user experience, and speed.",
   "facebook": "https://fb.com/aguila.reymark",
   "linkedin": "https://linkedin.com/in/reymark-aguila",
   "github": "https://github.com/rmrkweb",
@@ -28,8 +28,16 @@
       "company": "Kamal Osman Jamjoom Services Philippines Inc.",
       "role": "Web Developer",
       "dtStart": "December 2019",
-      "dtEnd": "Present",
+      "dtEnd": "December 2022",
       "loc": "Makati, NCR, Philippines"
+    },
+    {
+      "id": 4,
+      "company": "ConnectOS.",
+      "role": "Senior Frontend Developer",
+      "dtStart": "January 2023",
+      "dtEnd": "Present",
+      "loc": "Mega Tower, EDSA, Manila, Philippines"
     }
   ],
   "skills": [
@@ -76,7 +84,7 @@
     }
   ],
   "contactDes": "For any project commisions, new opportunities and any business matter, you can reach me through these media:",
-  "lastUpdate": "June, 2022",
+  "lastUpdate": "January, 2023",
   "contactInfo": [
     {
       "contact": "aguila.reymark@gmail.com",
