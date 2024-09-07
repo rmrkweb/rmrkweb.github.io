@@ -1,1 +1,189 @@
-<l ng-init="homeInit()"><a class="btn rounded-pill text-light backToTop p-0" ng-click="backToTop()" href="#" ng-class="{'show':showTopToggle}"><i class="mdi mdi-chevron-up mdi-18px"></i></a><section class="offcanvas offcanvas-top bg-primary" style="height:50px;" data-bs-scroll="true" data-bs-keyboard="false" data-bs-backdrop="false" tabindex="-1" id="headerHero"><div class="container pt-1 d-flex"><div class="me-2"><div class="h5 text-white m-0 d-flex align-items-center"><div class="avatar avatar-border-lg avatar-circle" style="width: 3rem; height: 3rem;  border: 2px solid #fff;"><img class="avatar-img" src="resources/images/profile.jpg" alt="profile photo"></div><l class="fw-light ms-2" ng-bind-html="myData.name"></l></div></div></div><button type="button" data-bs-toggle="offcanvas" data-bs-target="#menu" aria-controls="menu" style="top: 5px; right:0;" class="border-0 badge position-absolute bg-light p-2 mx-2 text-decoration-none"><i class="mdi mdi-menu text-primary mdi-24px"></i></button></section><section class="offcanvas offcanvas-end" tabindex="-1" id="menu" aria-labelledby="menuLabel"><div class="offcanvas-header"><h2 id="menuLabel" class="text-primary fw-light">Main Menu</h2><button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button></div><div class="offcanvas-body p-0"><div class="list-group"><h5 ng-click="gotoSection('.about')" class="list-group-item list-group-item-action py-2 border-0 fw-light">About</h5><h5 ng-click="gotoSection('.experiences')" class="list-group-item list-group-item-action py-2 border-0 fw-light">Experiences</h5><h5 ng-click="gotoSection('.skills')" class="list-group-item list-group-item-action py-2 border-0 fw-light">Skills</h5><h5 ng-click="gotoSection('.accomplishments')" class="list-group-item list-group-item-action py-2 border-0 fw-light">Accomplishments</h5><h5 ng-click="gotoSection('.contactme')" class="list-group-item list-group-item-action py-2 border-0 fw-light">Contact Me</h5></div></div></section><section style="margin-bottom: 175px;"><div class="bg-svg py-3 py-md-5 px-md-5 d-flex justify-content-center" style="min-height: 220px;"><div class="container position-absolute" style="top: 175px;"><div class="row"><div class="col-md-8 col-lg-6 d-flex align-items-center"><div class="img-fluid"><div class="avatar avatar-border-lg avatar-circle me-3"><img class="avatar-img" src="resources/images/profile.jpg" alt="profile photo"></div></div><div class="flex-column mt-4 mt-lg-2"><h2 class="text-primary mb-0" ng-bind-html="myData.name"></h2><h4 class="lead mb-0" ng-bind-html="myData.role"></h4><small class="text-muted"><i class="mdi mdi-phone me-1"></i>{{myData.contact}}</small></div></div><div class="col-md-4 col-lg-6"><div class="d-flex justify-content-end"><a ng-href="{{myData.github}}" target="_blank" class="badge rounded-pill bg-light p-2 mx-2 text-decoration-none"><i class="mdi mdi-github text-primary mdi-24px"></i> </a><a ng-href="{{myData.linkedin}}" target="_blank" class="badge rounded-pill bg-light p-2 mx-2 text-decoration-none"><i class="mdi mdi-linkedin text-primary mdi-24px"></i> </a><a ng-href="{{myData.facebook}}" target="_blank" class="badge rounded-pill bg-light p-2 mx-2 text-decoration-none"><i class="mdi mdi-facebook text-primary mdi-24px"></i></a></div></div></div></div></div></section><section class="mt-5 px-0 about"><div class="container rounded border bg-white"><div class="card border-0"><div class="card-body py-4"><h2 class="text-primary fw-light">About</h2><p class="text-muted" ng-bind-html="myData.about"></p></div></div></div></section><section class="mt-2 px-0 experiences"><div class="container rounded border bg-white"><div class="card border-0"><div class="card-body py-4"><h2 class="text-primary fw-light">Experiences</h2></div></div><div class="row pb-4"><div class="col-md-6 mb-3" ng-repeat="e in myData.experience | orderBy: 'id':true"><div class="card rounded" ng-class="{'shadow border-0': e.dtEnd === 'Present'}"><div class="avatar avatar-border-lg avatar-circle position-absolute" style="width: 3rem; height: 3rem; top:13px; right: 5px;  border: 3px solid #fff;"><img class="avatar-img" ng-src="{{'resources/images/experience/' + e.id + '.jpg'}}" alt="profile photo"></div><div class="card-header rounded-top border-0 bg-primary-50"><h5 class="mb-0 fw-light">{{e.role}}</h5></div><div class="card-body py-4"><strong class="fw-light">{{e.company}}</strong><p class="text-muted m-0">{{e.loc}}</p><small class="text-muted">{{e.dtStart}} - {{e.dtEnd}} <i class="mdi mdi-clock mx-1"></i> {{getDiffDate(e.dtStart, e.dtEnd)}}</small></div></div></div></div></div></section><section class="mt-2 px-0 skills"><div class="container rounded border bg-white"><div class="card border-0"><div class="card-body py-4"><h2 class="text-primary fw-light">Skills</h2><div class="w-100"><span class="badge rounded-pill bg-primary-50 m-1" ng-repeat="s in myData.skills"><l class="d-flex align-items-center text-dark" ng-bind-html="s"></l></span></div></div></div></div></section><section class="mt-2 px-0 accomplishments"><div class="container rounded border bg-white"><div class="card border-0"><div class="card-body py-4"><h2 class="text-primary fw-light">Accomplishments</h2><div class="owl-carousel owl-theme mt-4" data-control="myAccomplishmentsListCarousel"><div class="item mb-3" ng-repeat="a in myData.accomplishments"><div class="card course-item border-0 mx-auto rounded"><img ng-src="{{'resources/images/accomplishments/' + a.id + '.jpg'}}" class="card-img-top rounded-top" style="height:265px;" alt="..."><div class="card-body"><h5 class="card-title text-primary mb-0" ng-bind-html="a.title"></h5><small class="text-muted" ng-bind-html="a.description"></small></div></div></div></div></div></div></div></section><section class="mt-2 px-0 contactme"><div class="container rounded border bg-white"><div class="card border-0"><div class="card-body py-4"><h2 class="text-primary fw-light">Contact Me</h2><p class="text-muted" ng-bind-html="myData.contactDes"></p><div class="flex-column col-md-6 col-lg-4"><a ng-repeat="c in myData.contactInfo" ng-href="{{c.link}}" target="_blank" class="btn btn-link p-2 d-flex align-items-center text-decoration-none shadow-none"><i class="mdi {{c.icon}} text-primary me-1 mdi-24px"></i><l class="text-muted fw-light">{{c.contact}}</l></a></div></div></div></div></section><footer class="page-footer pt-0"><div class="footer-copyright mt-5"><div class="container"><div class="row"><div class="col-md-12 text-center">Copyright &copy; {{myData.copyright}} | <small class="fst-italic">Last Update: {{myData.lastUpdate}}</small></div></div></div></div></footer></l>
+<l ng-init="homeInit()"></l>
+    <a class="btn rounded-pill text-light backToTop p-0" ng-click="backToTop()" href="#" ng-class="{'show':showTopToggle}">
+        <i class="mdi mdi-chevron-up mdi-18px"></i>
+    </a>
+
+    <!-- Header Hero Section -->
+    <section class="offcanvas offcanvas-top bg-primary" style="height:50px;" data-bs-scroll="true" data-bs-keyboard="false" data-bs-backdrop="false" tabindex="-1" id="headerHero">
+        <div class="container pt-1 d-flex">
+            <div class="me-2">
+                <div class="h5 text-white m-0 d-flex align-items-center">
+                    <div class="avatar avatar-border-lg avatar-circle" style="width: 3rem; height: 3rem; border: 2px solid #fff;">
+                        <img class="avatar-img" src="resources/images/profile.jpg" alt="profile photo">
+                    </div>
+                    <l class="fw-light ms-2" ng-bind-html="myData.name"></l>
+                </div>
+            </div>
+        </div>
+        <button type="button" data-bs-toggle="offcanvas" data-bs-target="#menu" aria-controls="menu" style="top: 5px; right:0;" class="border-0 badge position-absolute bg-light p-2 mx-2 text-decoration-none">
+            <i class="mdi mdi-menu text-primary mdi-24px"></i>
+        </button>
+    </section>
+
+    <!-- Main Menu Section -->
+    <section class="offcanvas offcanvas-end" tabindex="-1" id="menu" aria-labelledby="menuLabel">
+        <div class="offcanvas-header">
+            <h2 id="menuLabel" class="text-primary fw-light">Main Menu</h2>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body p-0">
+            <div class="list-group">
+                <h5 ng-click="gotoSection('.about')" class="list-group-item list-group-item-action py-2 border-0 fw-light">About</h5>
+                <h5 ng-click="gotoSection('.experiences')" class="list-group-item list-group-item-action py-2 border-0 fw-light">Experiences</h5>
+                <h5 ng-click="gotoSection('.skills')" class="list-group-item list-group-item-action py-2 border-0 fw-light">Skills</h5>
+                <h5 ng-click="gotoSection('.accomplishments')" class="list-group-item list-group-item-action py-2 border-0 fw-light">Accomplishments</h5>
+                <h5 ng-click="gotoSection('.contactme')" class="list-group-item list-group-item-action py-2 border-0 fw-light">Contact Me</h5>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Section -->
+    <section style="margin-bottom: 175px;">
+        <div class="bg-svg py-3 py-md-5 px-md-5 d-flex justify-content-center" style="min-height: 220px;">
+            <div class="container position-absolute" style="top: 175px;">
+                <div class="row">
+                    <div class="col-md-8 col-lg-6 d-flex align-items-center">
+                        <div class="img-fluid">
+                            <div class="avatar avatar-border-lg avatar-circle me-3">
+                                <img class="avatar-img" src="resources/images/profile.jpg" alt="profile photo">
+                            </div>
+                        </div>
+                        <div class="flex-column mt-4 mt-lg-2">
+                            <h2 class="text-primary mb-0" ng-bind-html="myData.name"></h2>
+                            <h4 class="lead mb-0" ng-bind-html="myData.role"></h4>
+                            <small class="text-muted">
+                                <i class="mdi mdi-phone me-1"></i>{{myData.contact}}
+                            </small>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-6">
+                        <div class="d-flex justify-content-end">
+                            <a ng-href="{{myData.github}}" target="_blank" class="badge rounded-pill bg-light p-2 mx-2 text-decoration-none">
+                                <i class="mdi mdi-github text-primary mdi-24px"></i>
+                            </a>
+                            <a ng-href="{{myData.linkedin}}" target="_blank" class="badge rounded-pill bg-light p-2 mx-2 text-decoration-none">
+                                <i class="mdi mdi-linkedin text-primary mdi-24px"></i>
+                            </a>
+                            <a ng-href="{{myData.facebook}}" target="_blank" class="badge rounded-pill bg-light p-2 mx-2 text-decoration-none">
+                                <i class="mdi mdi-facebook text-primary mdi-24px"></i>
+                            </a>
+                            <a ng-href="javascript:void(0)" data-toggle="tooltip" title="Download my resume here" data-placement="top" class="badge rounded-pill bg-light p-2 mx-2 text-decoration-none"></a>
+                                <i class="mdi mdi-download-circle text-primary mdi-24px"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="mt-5 px-0 about">
+        <div class="container rounded border bg-white">
+            <div class="card border-0">
+                <div class="card-body py-4">
+                    <h2 class="text-primary fw-light">About</h2>
+                    <p class="text-muted" ng-bind-html="myData.about"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiences Section -->
+    <section class="mt-2 px-0 experiences">
+        <div class="container rounded border bg-white">
+            <div class="card border-0">
+                <div class="card-body py-4">
+                    <h2 class="text-primary fw-light">Experiences</h2>
+                </div>
+            </div>
+            <div class="row pb-4">
+                <div class="col-md-6 mb-3" ng-repeat="e in myData.experience | orderBy: 'id':true">
+                    <div class="card rounded" ng-class="{'shadow border-0': e.dtEnd === 'Present'}">
+                        <div class="avatar avatar-border-lg avatar-circle position-absolute" style="width: 3rem; height: 3rem; top:13px; right: 5px; border: 3px solid #fff;">
+                            <img class="avatar-img" ng-src="{{'resources/images/experience/' + e.id + '.jpg'}}" alt="profile photo">
+                        </div>
+                        <div class="card-header rounded-top border-0 bg-primary-50">
+                            <h5 class="mb-0 fw-light">{{e.role}}</h5>
+                        </div>
+                        <div class="card-body py-4">
+                            <strong class="fw-light">{{e.company}}</strong>
+                            <p class="text-muted m-0">{{e.loc}}</p>
+                            <small class="text-muted">{{e.dtStart}} - {{e.dtEnd}} <i class="mdi mdi-clock mx-1"></i> {{getDiffDate(e.dtStart, e.dtEnd)}}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="mt-2 px-0 skills">
+        <div class="container rounded border bg-white">
+            <div class="card border-0">
+                <div class="card-body py-4">
+                    <h2 class="text-primary fw-light">Skills</h2>
+                    <div class="w-100">
+                        <span class="badge rounded-pill bg-primary-50 m-1" ng-repeat="s in myData.skills">
+                            <l class="d-flex align-items-center text-dark" ng-bind-html="s"></l>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accomplishments Section -->
+    <section class="mt-2 px-0 accomplishments">
+        <div class="container rounded border bg-white">
+            <div class="card border-0">
+                <div class="card-body py-4">
+                    <h2 class="text-primary fw-light">Accomplishments</h2>
+                    <div class="owl-carousel owl-theme mt-4" data-control="myAccomplishmentsListCarousel">
+                        <div class="item mb-3" ng-repeat="a in myData.accomplishments">
+                            <div class="card course-item border-0 mx-auto rounded">
+                                <img ng-src="{{'resources/images/accomplishments/' + a.id + '.jpg'}}" class="card-img-top rounded-top" style="height:265px;" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title text-primary mb-0" ng-bind-html="a.title"></h5>
+                                    <small class="text-muted" ng-bind-html="a.description"></small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Me Section -->
+    <section class="mt-2 px-0 contactme">
+        <div class="container rounded border bg-white">
+            <div class="card border-0">
+                <div class="card-body py-4">
+                    <h2 class="text-primary fw-light">Contact Me</h2>
+                    <p class="text-muted" ng-bind-html="myData.contactDes"></p>
+                    <div class="flex-column col-md-6 col-lg-4">
+                        <a ng-repeat="c in myData.contactInfo" ng-href="{{c.link}}" target="_blank" class="btn btn-link p-2 d-flex align-items-center text-decoration-none shadow-none">
+                            <i class="mdi {{c.icon}} text-primary me-1 mdi-24px"></i>
+                            <l class="text-muted fw-light">{{c.contact}}</l>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="page-footer pt-0">
+        <div class="footer-copyright mt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        Copyright &copy; {{myData.copyright}} |
+                        <small class="fst-italic">Last Update: {{myData.lastUpdate}}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</l>
