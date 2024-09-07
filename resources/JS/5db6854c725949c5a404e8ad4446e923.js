@@ -926,6 +926,15 @@ app.controller('HomeController', [
         $sessionStorage,
         $cookies, tr) {
         $s.homeInit = function () {
+            // Function to deactivate Owl Carousel on the cloned content
+    function deactivateOwlCarousel(clone) {
+        $(clone).find('.owl-carousel').each(function() {
+          // Destroy Owl Carousel on each instance
+          if ($(this).data('owl.carousel')) {
+            $(this).trigger('destroy.owl.carousel');
+          }
+        });
+      }
             // Function to load the html2pdf library dynamically
     function loadHtml2Pdf(callback) {
         $.getScript('https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js', callback);
@@ -934,6 +943,7 @@ app.controller('HomeController', [
       // Function to generate the PDF
       function generatePDF() {
         const element = $('#content').clone();
+        deactivateOwlCarousel(element);
         element.find("[link-badges]").remove();
         html2pdf()
           .set({
