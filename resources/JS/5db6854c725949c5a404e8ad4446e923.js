@@ -940,6 +940,7 @@ app.controller('HomeController', [
                 $("[download-my-resume]").tooltip("show");
                 $("[download-my-resume]").on("click", function(e){
                     e.preventDefault();
+                    
 
                 });
                 $timeout(function () {
