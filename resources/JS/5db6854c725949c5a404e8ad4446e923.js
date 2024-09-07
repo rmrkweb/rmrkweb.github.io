@@ -926,6 +926,26 @@ app.controller('HomeController', [
         $sessionStorage,
         $cookies, tr) {
         $s.homeInit = function () {
+            // Function to load the html2pdf library dynamically
+    function loadHtml2Pdf(callback) {
+        $.getScript('https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js', callback);
+      }
+  
+      // Function to generate the PDF
+      function generatePDF() {
+        const element = document.getElementById('content');
+        html2pdf()
+          .set({
+            margin: 10,
+            filename: 'ReymarkAguilaCV.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2, useCORS: true },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+            pagebreak: { avoid: ['img', 'p'] } // Avoid splitting images and paragraphs
+          })
+          .from(element)
+          .save();
+      }
             $d.Request().then(function (r) {
                 $s.myData = r;
                 $.extend($s.myData,{copyright:(new Date()).getFullYear()});
@@ -940,7 +960,11 @@ app.controller('HomeController', [
                 $("[download-my-resume]").tooltip("show");
                 $("[download-my-resume]").on("click", function(e){
                     e.preventDefault();
-                    
+                    if (typeof html2pdf === 'undefined') {
+                        loadHtml2Pdf(generatePDF);
+                      } else {
+                        generatePDF();
+                      }
 
                 });
                 $timeout(function () {
