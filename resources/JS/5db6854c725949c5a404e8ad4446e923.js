@@ -928,6 +928,7 @@ app.controller('HomeController', [
         $s.homeInit = function () {
             $d.Request().then(function (r) {
                 $s.myData = r;
+                $.extend($s.myData,{copyright:(new Date()).getFullYear()});
                 $(window).scroll(function () {
                     $s.scrollValue = $(window).scrollTop();
                     if ($(window).scrollTop() > 150) {
