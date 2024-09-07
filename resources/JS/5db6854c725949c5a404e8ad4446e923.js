@@ -933,7 +933,8 @@ app.controller('HomeController', [
   
       // Function to generate the PDF
       function generatePDF() {
-        const element = document.getElementById('content');
+        const element = $('#content').clone();
+        element.find("[link-badges]").remove();
         html2pdf()
           .set({
             margin: 10,
@@ -941,9 +942,9 @@ app.controller('HomeController', [
             image: { type: 'jpeg', quality: 0.98 },
             html2canvas: { scale: 2, useCORS: true },
             jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-            pagebreak: { avoid: ['img', 'p'] } // Avoid splitting images and paragraphs
+            pagebreak: { mode: 'avoid-all',avoid: ['img', 'p'] } // Avoid splitting images and paragraphs
           })
-          .from(element)
+          .from(element[0])
           .save();
       }
             $d.Request().then(function (r) {
