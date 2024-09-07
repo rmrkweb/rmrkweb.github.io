@@ -937,7 +937,11 @@ app.controller('HomeController', [
                         $timeout(function () { $('#headerHero').offcanvas('hide'); $s.showTopToggle = false; });
                     }
                 });
+                $("[download-my-resume]").tooltip("show");
+                $("[download-my-resume]").on("click", function(e){
+                    e.preventDefault();
 
+                });
                 $timeout(function () {
                     $('[data-control="myAccomplishmentsListCarousel"]').owlCarousel({
                         loop: true,
