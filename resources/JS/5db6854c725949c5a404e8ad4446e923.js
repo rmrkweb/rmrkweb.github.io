@@ -927,14 +927,15 @@ app.controller('HomeController', [
         $cookies, tr) {
         $s.homeInit = function () {
             // Function to deactivate Owl Carousel on the cloned content
-    function deactivateOwlCarousel(clone) {
-        $(clone).find('.owl-carousel').each(function() {
-          // Destroy Owl Carousel on each instance
-          if ($(this).data('owl.carousel')) {
-            $(this).trigger('destroy.owl.carousel');
-          }
-        });
-      }
+            function deactivateOwlCarousel(clone) {
+                $(clone).find('.owl-carousel').each(function() {
+                  if ($(this).data('owl.carousel')) {
+                    $(this).trigger('destroy.owl.carousel');
+                    $(this).removeClass('owl-carousel owl-loaded owl-drag');
+                    $(this).find('.owl-stage-outer, .owl-stage, .owl-item').remove();
+                  }
+                });
+              }
             // Function to load the html2pdf library dynamically
     function loadHtml2Pdf(callback) {
         $.getScript('https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js', callback);
