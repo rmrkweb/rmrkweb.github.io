@@ -109,10 +109,10 @@
                         let imageUrl = `https://drive.google.com/uc?id=${file.id}`; // Using "uc?id=" format for full-size image
 
                         galleryHtml += `
-                            <a href="${imageUrl}" data-lg-size="1600-1600">
-                                <div class="col-6 col-md-4 col-lg-3 mb-3 overflow-hidden gallery">
+                            <a href="${imageUrl}" data-lg-size="1600-1600" class="col-6 col-md-4 col-lg-3 mb-3 overflow-hidden gallery">
+                                
                                     <img src="https://drive.google.com/thumbnail?id=${file.id}&sz=w600-h400" alt="${file.name}" class=" img-fluid">
-                                </div>
+                                
                             </a>
                         `;
                     }
