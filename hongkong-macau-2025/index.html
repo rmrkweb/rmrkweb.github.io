@@ -158,7 +158,7 @@
 
         // Initialize PhotoSwipe
         function initPhotoSwipeFromDOM(gallerySelector) {
-            var galleryElements = document.querySelectorAll(gallerySelector);
+            var galleryElements = document.querySelectorAll(gallerySelector +' a');
 
             var items = [];
             galleryElements.forEach(function(element) {
