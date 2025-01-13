@@ -12,6 +12,8 @@
         body {
             font-family: 'Arial', sans-serif;
         }
+
+        /* Restored Banner Section */
         .banner {
             position: relative;
             background: url('https://via.placeholder.com/1500x800') no-repeat center center/cover;
@@ -22,27 +24,21 @@
             align-items: center;
             justify-content: center;
         }
+
         .banner h1 {
             font-size: 3rem;
             font-weight: bold;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
         }
+
+        /* Image gallery thumbnail styling */
         .gallery img {
             width: 100%;
             max-height: 200px;
             object-fit: cover;
             border-radius: 10px;
             cursor: pointer;
-        }
-        .accordion-body {
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-        @media (max-width: 768px) {
-            .accordion-body {
-                max-height: none;
-                overflow-y: visible;
-            }
+            margin-bottom: 15px;
         }
 
         /* Footer Styles */
@@ -52,10 +48,12 @@
             padding: 20px 0;
             text-align: center;
         }
+
         footer a {
             color: #f39c12;
             text-decoration: none;
         }
+
         footer a:hover {
             text-decoration: underline;
         }
@@ -104,25 +102,28 @@
 
         function fetchPhotosFromFolder(folderId, containerId) {
             $.get(`https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${apiKey}`, function(data) {
+                let galleryHtml = '';
                 data.files.forEach(file => {
                     if (file.mimeType.startsWith('image/')) {
-                        $(`#${containerId}`).append(`
-                            <div class="col-6 col-md-3 mb-3">
-                                <div class="card">
-                                    <!-- Use lightGallery to wrap images and show the full-size on click -->
-                                    <a href="https://drive.google.com/uc?export=view&id=${file.id}" data-lg-size="1600-1600">
-                                        <img src="https://drive.google.com/thumbnail?id=${file.id}&sz=w600-h400" alt="${file.name}" class="gallery img-fluid">
-                                    </a>
-                                </div>
-                            </div>
-                        `);
+                        galleryHtml += `
+                            <a href="https://drive.google.com/uc?export=view&id=${file.id}" data-lg-size="1600-1600">
+                                <img src="https://drive.google.com/thumbnail?id=${file.id}&sz=w600-h400" alt="${file.name}" class="gallery img-fluid">
+                            </a>
+                        `;
                     }
                 });
 
-                // Initialize lightGallery for the gallery viewer
+                // Append galleryHtml to the container
+                $(`#${containerId}`).html(galleryHtml);
+
+                // Initialize lightGallery with toolbar enabled
                 $('#gallery-accordion').lightGallery({
                     selector: '.gallery a',
-                    download: true // Enable download button for each image
+                    download: true, // Enable download button for each image
+                    zoom: true,     // Enable zoom functionality
+                    fullScreen: true, // Enable full screen option
+                    share: true,   // Enable sharing option
+                    selector: '.gallery a'
                 });
             });
         }
