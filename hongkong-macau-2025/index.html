@@ -152,13 +152,13 @@
                 $(`#${containerId}`).html(galleryHtml);
                 
                 // Initialize Photoswipe on the new gallery
-                initPhotoSwipeFromDOM(`#${containerId}`);
+                initPhotoSwipeFromDOM(containerId);
             });
         }
 
         // Initialize PhotoSwipe
         function initPhotoSwipeFromDOM(gallerySelector) {
-            var galleryElements = document.querySelectorAll(gallerySelector + ' a');
+            var galleryElements = document.querySelectorAll(gallerySelector);
 
             var items = [];
             galleryElements.forEach(function(element) {
