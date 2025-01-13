@@ -17,7 +17,6 @@
 </head>
 <body>
     <div class="container mt-4">
-        <h1 class="text-center">Hong Kong - Macau 2025</h1>
         <div id="gallery-sections" class="mt-4"></div>
     </div>
 
@@ -42,7 +41,7 @@
                             $(`#${folderId}`).append(`
                                 <div class="col-md-4">
                                     <div class="card">
-                                        <img src="https://drive.google.com/uc?id=${file.id}" alt="${file.name}" class="gallery img-fluid">
+                                        <img src="https://drive.google.com/thumbnail?id=${file.id}&sz=w600-h400" alt="${file.name}" class="gallery img-fluid">
                                         <div class="card-body">
                                             <p class="card-text text-center">${file.name}</p>
                                         </div>
@@ -56,7 +55,7 @@
         }
 
         $(document).ready(function() {
-            fetchPhotosFromFolder(folderId, 'Main Folder');
+            fetchPhotosFromFolder(folderId, 'Hong Kong - Macau 2025');
         });
     </script>
 </body>
