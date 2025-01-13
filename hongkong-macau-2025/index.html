@@ -88,7 +88,7 @@
                                 </button>
                             </h2>
                             <div id="collapse-${folder.id}" class="accordion-collapse collapse ${isExpanded}" aria-labelledby="heading-${folder.id}" data-bs-parent="#gallery-accordion">
-                                <div class="accordion-body gallery">
+                                <div class="accordion-body ">
                                     <div class="row" id="${folder.id}"></div>
                                 </div>
                             </div>
@@ -110,7 +110,7 @@
 
                         galleryHtml += `
                             <a href="${imageUrl}" data-lg-size="1600-1600">
-                                <div class="col-6 col-md-4 col-lg-3 mb-3 overflow-hidden">
+                                <div class="col-6 col-md-4 col-lg-3 mb-3 overflow-hidden gallery">
                                     <img src="https://drive.google.com/thumbnail?id=${file.id}&sz=w600-h400" alt="${file.name}" class=" img-fluid">
                                 </div>
                             </a>
@@ -123,7 +123,7 @@
 
                 // Initialize lightGallery with toolbar enabled
                 $('#gallery-accordion').lightGallery({
-                    selector: '.gallery a',
+                    selector: '.gallery',
                     download: true, // Enable download button for each image
                     zoom: true,     // Enable zoom functionality
                     fullScreen: true, // Enable full screen option
