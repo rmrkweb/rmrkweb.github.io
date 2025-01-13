@@ -24,6 +24,17 @@
         const folderId = '1FjXPbVRrF1MFNZj3qtRn_kUHK4zK2530';
         const apiKey = 'AIzaSyCOa1WJTCp4SI-cCIp9EyYIULAHZOq2GOY';
 
+        function fetchFoldersAndSort() {
+            $.get(`https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents+and+mimeType='application/vnd.google-apps.folder'&key=${apiKey}`, function(data) {
+                // Sort folders alphabetically
+                let folders = data.files.sort((a, b) => a.name.localeCompare(b.name));
+                
+                folders.forEach(folder => {
+                    fetchPhotosFromFolder(folder.id, folder.name);
+                });
+            });
+        }
+
         function fetchPhotosFromFolder(folderId, folderName) {
             $.get(`https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${apiKey}`, function(data) {
                 if (data.files.length > 0) {
@@ -35,7 +46,6 @@
 
                     data.files.forEach(file => {
                         if (file.mimeType === 'application/vnd.google-apps.folder') {
-                            // Recursive call for subfolder
                             fetchPhotosFromFolder(file.id, file.name);
                         } else if (file.mimeType.startsWith('image/')) {
                             $(`#${folderId}`).append(`
@@ -55,7 +65,7 @@
         }
 
         $(document).ready(function() {
-            fetchPhotosFromFolder(folderId, 'Hong Kong - Macau 2025');
+            fetchFoldersAndSort();
         });
     </script>
 </body>
