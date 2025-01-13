@@ -79,7 +79,7 @@
                 data.files.forEach(file => {
                     if (file.mimeType.startsWith('image/')) {
                         $(`#${containerId}`).append(`
-                            <div class="col-md-4">
+                            <div class="col-6 col-md-3 mb-1">
                                 <div class="card">
                                     <img src="https://drive.google.com/thumbnail?id=${file.id}&sz=w600-h400" alt="${file.name}" class="gallery img-fluid">
                                     <div class="card-body">
