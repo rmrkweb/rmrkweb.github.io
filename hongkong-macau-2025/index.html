@@ -105,9 +105,14 @@
                 let galleryHtml = '';
                 data.files.forEach(file => {
                     if (file.mimeType.startsWith('image/')) {
+                        // Generate URL for full-size image using Google Drive's direct view link
+                        let imageUrl = `https://drive.google.com/uc?export=view&id=${file.id}`;
+
                         galleryHtml += `
-                            <a href="https://drive.google.com/uc?export=view&id=${file.id}" data-lg-size="1600-1600">
-                                <img src="https://drive.google.com/thumbnail?id=${file.id}&sz=w600-h400" alt="${file.name}" class="gallery img-fluid">
+                            <a href="${imageUrl}" data-lg-size="1600-1600">
+                                <div class="col-6 col-md-4 col-lg-3 mb-3">
+                                    <img src="https://drive.google.com/thumbnail?id=${file.id}&sz=w600-h400" alt="${file.name}" class="gallery img-fluid">
+                                </div>
                             </a>
                         `;
                     }
