@@ -17,7 +17,8 @@
 </head>
 <body>
     <div class="container mt-4">
-        <div id="gallery-sections" class="mt-4"></div>
+        <h1 class="text-center">Hong Kong - Macau 2025</h1>
+        <div class="accordion mt-4" id="gallery-accordion"></div>
     </div>
 
     <script>
@@ -26,41 +27,46 @@
 
         function fetchFoldersAndSort() {
             $.get(`https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents+and+mimeType='application/vnd.google-apps.folder'&key=${apiKey}`, function(data) {
-                // Sort folders alphabetically
                 let folders = data.files.sort((a, b) => a.name.localeCompare(b.name));
-                
-                folders.forEach(folder => {
-                    fetchPhotosFromFolder(folder.id, folder.name);
+
+                folders.forEach((folder, index) => {
+                    let isExpanded = index === 0 ? 'show' : '';
+                    let sectionHtml = `
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading-${folder.id}">
+                                <button class="accordion-button ${isExpanded ? '' : 'collapsed'}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-${folder.id}" aria-expanded="${index === 0}" aria-controls="collapse-${folder.id}">
+                                    ${folder.name}
+                                </button>
+                            </h2>
+                            <div id="collapse-${folder.id}" class="accordion-collapse collapse ${isExpanded}" aria-labelledby="heading-${folder.id}" data-bs-parent="#gallery-accordion">
+                                <div class="accordion-body">
+                                    <div class="row" id="${folder.id}"></div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    $('#gallery-accordion').append(sectionHtml);
+                    fetchPhotosFromFolder(folder.id, folder.id);
                 });
             });
         }
 
-        function fetchPhotosFromFolder(folderId, folderName) {
+        function fetchPhotosFromFolder(folderId, containerId) {
             $.get(`https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${apiKey}`, function(data) {
-                if (data.files.length > 0) {
-                    let sectionHtml = `
-                        <h2 class="mt-5">${folderName}</h2>
-                        <div class="row" id="${folderId}"></div>
-                    `;
-                    $('#gallery-sections').append(sectionHtml);
-
-                    data.files.forEach(file => {
-                        if (file.mimeType === 'application/vnd.google-apps.folder') {
-                            fetchPhotosFromFolder(file.id, file.name);
-                        } else if (file.mimeType.startsWith('image/')) {
-                            $(`#${folderId}`).append(`
-                                <div class="col-md-4">
-                                    <div class="card">
-                                        <img src="https://drive.google.com/thumbnail?id=${file.id}&sz=w600-h400" alt="${file.name}" class="gallery img-fluid">
-                                        <div class="card-body">
-                                            <p class="card-text text-center">${file.name}</p>
-                                        </div>
+                data.files.forEach(file => {
+                    if (file.mimeType.startsWith('image/')) {
+                        $(`#${containerId}`).append(`
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img src="https://drive.google.com/thumbnail?id=${file.id}&sz=w600-h400" alt="${file.name}" class="gallery img-fluid">
+                                    <div class="card-body">
+                                        <p class="card-text text-center">${file.name}</p>
                                     </div>
                                 </div>
-                            `);
-                        }
-                    });
-                }
+                            </div>
+                        `);
+                    }
+                });
             });
         }
 
@@ -68,5 +74,6 @@
             fetchFoldersAndSort();
         });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
