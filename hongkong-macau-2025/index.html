@@ -31,16 +31,10 @@
             margin-bottom: 15px;
             border-radius: 10px;
         }
-        .accordion {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background-color: #fff;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 10px 0;
-        }
-        .accordion-button {
-            font-weight: bold;
+        .accordion-body {
+            max-height: 80vh;
+            overflow-y: auto;
+            scroll-behavior: smooth;
         }
     </style>
 </head>
