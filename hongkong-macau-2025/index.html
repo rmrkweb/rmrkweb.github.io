@@ -14,7 +14,7 @@
         }
         .banner {
             position: relative;
-            background: url('../resources/images/Picsart_25-01-13_21-02-42-356.jpg') no-repeat center center/cover;
+            background: url('https://via.placeholder.com/1500x800') no-repeat center center/cover;
             height: 400px;
             color: #fff;
             text-align: center;
@@ -72,8 +72,6 @@
         <div class="accordion my-4" id="gallery-accordion"></div>
     </div>
 
-    <!-- Modal for Image Viewer (LightGallery will handle it) -->
-
     <script>
         const folderId = '1FjXPbVRrF1MFNZj3qtRn_kUHK4zK2530';
         const apiKey = 'AIzaSyCOa1WJTCp4SI-cCIp9EyYIULAHZOq2GOY';
@@ -111,19 +109,17 @@
                         $(`#${containerId}`).append(`
                             <div class="col-6 col-md-3 mb-3">
                                 <div class="card">
+                                    <!-- Use lightGallery to wrap images and show the full-size on click -->
                                     <a href="https://drive.google.com/uc?export=view&id=${file.id}" data-lg-size="1600-1600">
-                                        <img src="https://drive.google.com/thumbnail?id=${file.id}&sz=w600-h400" alt="${file.name}" class="gallery img-fluid" data-file-id="${file.id}" data-file-name="${file.name}">
+                                        <img src="https://drive.google.com/thumbnail?id=${file.id}&sz=w600-h400" alt="${file.name}" class="gallery img-fluid">
                                     </a>
-                                    <div class="card-body">
-                                        <p class="card-text text-center">${file.name}</p>
-                                    </div>
                                 </div>
                             </div>
                         `);
                     }
                 });
 
-                // Initialize lightGallery for the clicked images
+                // Initialize lightGallery for the gallery viewer
                 $('#gallery-accordion').lightGallery({
                     selector: '.gallery a',
                     download: true // Enable download button for each image
