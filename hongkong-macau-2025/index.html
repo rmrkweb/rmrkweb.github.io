@@ -121,14 +121,12 @@
                 // Append galleryHtml to the container
                 $(`#${containerId}`).html(galleryHtml);
 
-                // Initialize lightGallery with toolbar enabled
-                $('#gallery-accordion').lightGallery({
-                    
+                // Initialize lightGallery for the newly appended images inside the container
+                $(`#${containerId}`).lightGallery({
                     download: true, // Enable download button for each image
                     zoom: true,     // Enable zoom functionality
                     fullScreen: true, // Enable full screen option
                     share: true  // Enable sharing option
-                    
                 });
             });
         }
