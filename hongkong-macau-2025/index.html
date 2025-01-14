@@ -96,6 +96,15 @@
             // Dynamically update the copyright year
             const currentYear = new Date().getFullYear();
             $('#copyright-year').text(currentYear);
+
+
+
+    // Add click event listener to the accordion buttons
+    $('.accordion-header').on('click', '.accordion-header', function() {
+        // Scroll the page to the top when an accordion header is clicked
+        $('html, body').animate({ scrollTop: 0 }, 'slow');
+    });
+
         });
 
         // Fetch and sort folders
@@ -152,7 +161,8 @@
         gallery: '.ps',
         children: 'a',
         // dynamic import is not supported in UMD version
-        pswpModule: PhotoSwipe 
+        pswpModule: PhotoSwipe,
+        scaleMode: 'fit'
       });
       lightbox.init();
         }
