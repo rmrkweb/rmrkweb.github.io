@@ -132,7 +132,7 @@
         function fetchPhotosFromFolder(folderId, containerId) {
             $.get(`https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${apiKey}`, function(data) {
                 const galleryHtml = data.files.filter(file => file.mimeType.startsWith('image/')).map(file => {
-                    const imageUrl = `https://drive.google.com/uc?id=${file.id}&export=view`;
+                    const imageUrl = `https://drive.google.com/thumbnail?id=${file.id}&sz=1200-h800`;
                     const thumbnailUrl = `https://drive.google.com/thumbnail?id=${file.id}&sz=w600-h400`;
                     return `
                         <a href="${imageUrl}" data-pswp="{&quot;src&quot;:&quot;${imageUrl}&quot;,&quot;w&quot;:1600,&quot;h&quot;:1600,&quot;title&quot;:&quot;${file.name}&quot;}" class="col-6 col-md-4 col-lg-3 mb-3 gallery">
