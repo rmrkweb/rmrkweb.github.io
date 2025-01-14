@@ -41,12 +41,16 @@
         .gallery img {
             width: 100%;
             max-height: 200px;
-            min-height: 200px;
             object-fit: cover;
             object-position: center;
             border-radius: 10px;
             cursor: pointer;
             margin-bottom: 10px;
+            transition: transform 0.2s ease; /* Smooth transition for hover effect */
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05); /* Slight zoom effect on hover */
         }
 
         /* Custom grid layout for thumbnails */
@@ -62,7 +66,7 @@
         /* Gallery Grid Layout */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* 2 images per row on mobile */
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Automatically adjust columns */
             gap: 10px; /* Reduced space between images */
         }
 
