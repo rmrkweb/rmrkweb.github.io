@@ -18,6 +18,7 @@
             align-items: center;
             justify-content: center;
         }
+
         .banner::after {
             content: "";
             position: absolute;
@@ -28,12 +29,14 @@
             background: rgba(0, 0, 0, 0.5);
             z-index: 1;
         }
+
         .banner h1 {
             font-size: 3rem;
             font-weight: bold;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
             z-index: 2;
         }
+
         .gallery img {
             width: 100%;
             max-height: 200px;
@@ -44,16 +47,19 @@
             cursor: pointer;
             margin-bottom: 15px;
         }
+
         footer {
             background-color: #2c3e50;
             color: white;
             padding: 20px 0;
             text-align: center;
         }
+
         footer a {
             color: #f39c12;
             text-decoration: none;
         }
+
         footer a:hover {
             text-decoration: underline;
         }
@@ -86,22 +92,22 @@
         const folderId = '1FjXPbVRrF1MFNZj3qtRn_kUHK4zK2530';
         const apiKey = 'AIzaSyCOa1WJTCp4SI-cCIp9EyYIULAHZOq2GOY';
 
-        $(document).ready(function () {
+        $(document).ready(function() {
             fetchFoldersAndSort();
 
-            // Dynamically update the copyright year
+            // Update copyright year dynamically
             const currentYear = new Date().getFullYear();
             $('#copyright-year').text(currentYear);
 
             // Scroll to top when an accordion header is clicked
-            $('#gallery-accordion').on('click', '.accordion-header button', function () {
+            $(document).on('click', '.accordion-header button', function() {
                 $('html, body').animate({ scrollTop: 0 }, 'slow');
             });
         });
 
         // Fetch and sort folders
         function fetchFoldersAndSort() {
-            $.get(`https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents+and+mimeType='application/vnd.google-apps.folder'&key=${apiKey}`, function (data) {
+            $.get(`https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents+and+mimeType='application/vnd.google-apps.folder'&key=${apiKey}`, function(data) {
                 const folders = data.files.sort((a, b) => a.name.localeCompare(b.name));
                 folders.forEach((folder, index) => {
                     let isExpanded = index === 0 ? 'show' : '';
@@ -129,14 +135,14 @@
             `;
         }
 
-        // Fetch photos from a folder and update gallery
+        // Fetch photos from a folder and update the gallery
         function fetchPhotosFromFolder(folderId, containerId) {
-            $.get(`https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${apiKey}`, function (data) {
+            $.get(`https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${apiKey}`, function(data) {
                 const galleryHtml = data.files.filter(file => file.mimeType.startsWith('image/')).map(file => {
                     const imageUrl = `https://drive.google.com/thumbnail?id=${file.id}&sz=w1200`;
                     const thumbnailUrl = `https://drive.google.com/thumbnail?id=${file.id}&sz=w600-h400`;
                     return `
-                        <a href="${imageUrl}" data-pswp="{&quot;src&quot;:&quot;${imageUrl}&quot;,&quot;w&quot;:1600,&quot;h&quot;:1600,&quot;title&quot;:&quot;${file.name}&quot;}" class="col-6 col-md-4 col-lg-3 mb-3 gallery">
+                        <a href="${imageUrl}" data-pswp='{"src":"${imageUrl}", "title":"${file.name}"}' class="col-6 col-md-4 col-lg-3 mb-3 gallery">
                             <img src="${thumbnailUrl}" alt="${file.name}" class="img-fluid">
                         </a>
                     `;
@@ -147,14 +153,30 @@
             });
         }
 
-        // Initialize PhotoSwipe for gallery
+        // Initialize PhotoSwipe for the gallery
         function initializePhotoSwipe() {
             var lightbox = new PhotoSwipeLightbox({
                 gallery: '.ps',
                 children: 'a',
                 pswpModule: PhotoSwipe,
-                scaleMode: 'none' // No fitting or filling
+                scaleMode: 'contain'
             });
+
+            lightbox.on('uiRegister', function() {
+                lightbox.pswp.ui.registerElement({
+                    name: 'custom-caption',
+                    isButton: false,
+                    appendTo: 'root',
+                    html: '',
+                    onInit: (el, pswp) => {
+                        pswp.on('change', () => {
+                            const currSlide = pswp.currSlide;
+                            el.innerHTML = currSlide.data.title || '';
+                        });
+                    }
+                });
+            });
+
             lightbox.init();
         }
     </script>
