@@ -95,7 +95,7 @@
         $(document).ready(function() {
             fetchFoldersAndSort();
 
-            // Update copyright year dynamically
+            // Dynamically update copyright year
             const currentYear = new Date().getFullYear();
             $('#copyright-year').text(currentYear);
 
@@ -135,7 +135,7 @@
             `;
         }
 
-        // Fetch photos from a folder and update the gallery
+        // Fetch photos from a folder and update gallery
         function fetchPhotosFromFolder(folderId, containerId) {
             $.get(`https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${apiKey}`, function(data) {
                 const galleryHtml = data.files.filter(file => file.mimeType.startsWith('image/')).map(file => {
@@ -153,13 +153,14 @@
             });
         }
 
-        // Initialize PhotoSwipe for the gallery
+        // Initialize PhotoSwipe for gallery
         function initializePhotoSwipe() {
             var lightbox = new PhotoSwipeLightbox({
                 gallery: '.ps',
                 children: 'a',
                 pswpModule: PhotoSwipe,
-                scaleMode: 'contain'
+                scaleMode: 'fit',
+                captionSelector: 'data-pswp',
             });
 
             lightbox.on('uiRegister', function() {
@@ -171,7 +172,7 @@
                     onInit: (el, pswp) => {
                         pswp.on('change', () => {
                             const currSlide = pswp.currSlide;
-                            el.innerHTML = currSlide.data.title || '';
+                            el.innerHTML = currSlide.data.title || '';  // Set the title from metadata
                         });
                     }
                 });
