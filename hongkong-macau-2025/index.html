@@ -63,6 +63,16 @@
         footer a:hover {
             text-decoration: underline;
         }
+
+        /* Custom PhotoSwipe styling to ensure padding around images */
+        .pswp__scroll-wrap {
+            padding: 10vh 0; /* Top and bottom padding */
+        }
+
+        .pswp__img {
+            object-fit: contain !important; /* Ensure the image does not stretch */
+            margin: 0 auto; /* Center the image */
+        }
     </style>
 </head>
 <body>
@@ -170,23 +180,8 @@
                 gallery: '.ps',
                 children: 'a',
                 pswpModule: PhotoSwipe,
-                scaleMode: 'none',  // Avoid stretching the image
+                scaleMode: 'none',  // Prevent scaling
                 captionSelector: 'data-pswp',
-            });
-
-            lightbox.on('uiRegister', function() {
-                lightbox.pswp.ui.registerElement({
-                    name: 'custom-caption',
-                    isButton: false,
-                    appendTo: 'root',
-                    html: '',
-                    onInit: (el, pswp) => {
-                        pswp.on('change', () => {
-                            const currSlide = pswp.currSlide;
-                            el.innerHTML = currSlide.data.title || '';  // Set the title from metadata
-                        });
-                    }
-                });
             });
 
             lightbox.init();
