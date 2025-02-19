@@ -107,7 +107,7 @@
                             <h5 class="mb-0 fw-light">{{e.role}}</h5>
                         </div>
                         <div class="card-body py-4">
-                            <strong class="fw-light">{{e.company}}</strong>
+                            <strong class="fw-light" ng-bind-html="e.company"></strong>
                             <p class="text-muted m-0">{{e.loc}}</p>
                             <small class="text-muted">{{e.dtStart}} - {{e.dtEnd}} <i class="mdi mdi-clock mx-1"></i> {{getDiffDate(e.dtStart, e.dtEnd)}}</small>
                         </div>
