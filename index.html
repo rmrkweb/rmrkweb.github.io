@@ -1,14 +1,344 @@
-<!DOCTYPE html><html ng-app="app" data-theme="default" lang="en" style="font-size: 14px;"><head><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="RMRK Web is the official website of Reymark Aguila, Reymark's Portfolio, Reymark Aguila online Resume">
-<meta name="keywords" content="Reymark Aguila, Reymark Lopez Aguila, Reymark, Lopez, Aguila, Reymark Aguila Facebook, Reymark Aguila LinkedIn, About Reymark, 639515853134, 639668862186, aguila.reymark@gmail.com, rmrk, rmrk web, rmrk website, rmrkweb@gmail.com">
-<base href="/"><link rel="shortcut icon" href="resources/images/logo.png" type="image/x-icon"><title>Reymark Aguila</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700;900&family=Lato:wght@400;700;900&family=Roboto:wght@400;700&family=Mulish:wght@700&display=swap" rel="stylesheet"><link rel="stylesheet" href="resources/fonts/materialicons.css"><link href="resources/CSS/b074908107ed4c1abd495543378cb5ce.css" rel="stylesheet" type="text/css">
-<!-- Google tag (gtag.js) -->
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Reymark Aguila Portfolio">
+<title>Reymark Aguila | Portfolio</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GM7L425MDL"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-GM7L425MDL');
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-GM7L425MDL');
 </script>
-</head><body ng-controller="mainCtrl" ng-cloak ng-init="IndexInit()"><link href="resources/CSS/69087c3564904d4ca1eff0b36d4110b7.css" rel="stylesheet"><section class="main-section min-vh-100"><header id="header" ui-view="header"></header><main ui-view="main"></main></section><div wc-overlay wc-overlay-delay="300" wc-overlay-late="1000" class="overlay-override" ng-model="Override"></div><script src="resources/JS/b9570adeba324732af6cd7b053711886.js" type="text/javascript"></script><script src="resources/JS/7efea87884f34892928e88f08d4f8a54.js" type="text/javascript"></script><script src="resources/JS/2d6a73f102c64c04b6f6b333221e4103.js" type="text/javascript"></script><script src="resources/JS/5db6854c725949c5a404e8ad4446e923.js" type="text/javascript"></script></body></html>
+
+<style>
+:root{
+  --accent:#111827;
+    scroll-behavior:smooth;
+    }
+
+    body{
+      overflow-x:hidden;
+        background:var(--bs-body-bg);
+        }
+
+        a{color:var(--accent)}
+
+        .gradient{
+          background:linear-gradient(135deg,#111827,#374151,#6b7280);
+            -webkit-background-clip:text;
+              -webkit-text-fill-color:transparent;
+              }
+
+              /* SECTION CARDS */
+              .section-card{
+                background:var(--bs-body-bg);
+                  border:1px solid rgba(0,0,0,.06);
+                    border-radius:1.5rem;
+                      padding:2rem;
+                        box-shadow:0 10px 30px rgba(0,0,0,.05);
+                          margin-bottom:2rem;
+                            transition:.3s;
+                            }
+                            .section-card:hover{
+                              transform:translateY(-6px);
+                              }
+
+                              /* HERO */
+                              .hero{
+                                min-height:100vh;
+                                  display:flex;
+                                    align-items:center;
+                                      background:radial-gradient(circle at top right,rgba(17,24,39,.08),transparent 40%),
+                                                   radial-gradient(circle at bottom left,rgba(55,65,81,.08),transparent 40%);
+                                                   }
+
+                                                   /* PROFILE IMAGE BLENDING */
+                                                   .hero-photo{
+                                                     max-width:380px;
+                                                       border-radius:2rem;
+                                                         filter:contrast(1.05) saturate(1.1);
+                                                           box-shadow:0 25px 60px rgba(0,0,0,.18);
+                                                             animation:float 6s ease-in-out infinite;
+                                                             }
+
+                                                             @keyframes float{
+                                                               0%{transform:translateY(0)}
+                                                                 50%{transform:translateY(-12px)}
+                                                                   100%{transform:translateY(0)}
+                                                                   }
+
+                                                                   /* EXPERIENCE LOGO */
+                                                                   .exp-logo{
+                                                                     width:54px;
+                                                                       height:54px;
+                                                                         object-fit:cover;
+                                                                           border-radius:12px;
+                                                                             border:1px solid rgba(0,0,0,.1);
+                                                                             }
+
+                                                                             /* ACCOMPLISHMENT THUMB */
+                                                                             .acc-thumb{
+                                                                               width:100%;
+                                                                                 height:110px;
+                                                                                   object-fit:cover;
+                                                                                     border-radius:12px;
+                                                                                     }
+
+                                                                                     /* SKILLS */
+                                                                                     .skill{
+                                                                                       display:inline-flex;
+                                                                                         align-items:center;
+                                                                                           gap:.4rem;
+                                                                                             padding:.5rem .75rem;
+                                                                                               border-radius:999px;
+                                                                                                 background:rgba(0,0,0,.04);
+                                                                                                   margin:.25rem;
+                                                                                                     font-weight:600;
+                                                                                                     }
+
+                                                                                                     /* REVEAL */
+                                                                                                     .reveal{
+                                                                                                       opacity:0;
+                                                                                                         transform:translateY(20px);
+                                                                                                           transition:.7s;
+                                                                                                           }
+                                                                                                           .reveal.show{
+                                                                                                             opacity:1;
+                                                                                                               transform:none;
+                                                                                                               }
+
+                                                                                                               /* THEME SWITCH */
+                                                                                                               .theme-btns button{
+                                                                                                                 margin-left:.3rem;
+                                                                                                                 }
+                                                                                                                 </style>
+                                                                                                                 </head>
+                                                                                                                 <body>
+
+                                                                                                                 <nav class="navbar navbar-expand-lg sticky-top bg-body-tertiary border-bottom">
+                                                                                                                 <div class="container">
+                                                                                                                 <a class="navbar-brand fw-bold gradient" href="#home" id="brand">Portfolio</a>
+                                                                                                                 <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav"></button>
+
+                                                                                                                 <div class="collapse navbar-collapse" id="nav">
+                                                                                                                 <ul class="navbar-nav ms-auto gap-2 align-items-lg-center">
+                                                                                                                 <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                                                                                                                 <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                                                                                                                 <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                                                                                                                 <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+
+                                                                                                                 <li class="nav-item theme-btns">
+                                                                                                                 <button class="btn btn-sm btn-outline-dark" data-theme="auto">Auto</button>
+                                                                                                                 <button class="btn btn-sm btn-outline-dark" data-theme="light">Off</button>
+                                                                                                                 <button class="btn btn-sm btn-dark" data-theme="dark">On</button>
+                                                                                                                 </li>
+                                                                                                                 </ul>
+                                                                                                                 </div>
+                                                                                                                 </div>
+                                                                                                                 </nav>
+
+                                                                                                                 <!-- HERO -->
+                                                                                                                 <section id="home" class="hero">
+                                                                                                                 <div class="container">
+                                                                                                                 <div class="row align-items-center g-5">
+
+                                                                                                                 <div class="col-lg-7 reveal">
+                                                                                                                 <h1 class="display-3 fw-bold" id="name"></h1>
+                                                                                                                 <h2 class="gradient fw-bold" id="role"></h2>
+                                                                                                                 <div class="text-secondary mb-4" id="aboutTop"></div>
+
+                                                                                                                 <a id="github" class="btn btn-dark">GitHub</a>
+                                                                                                                 <a id="linkedin" class="btn btn-dark">LinkedIn</a>
+                                                                                                                 <a id="facebook" class="btn btn-dark">Facebook</a>
+                                                                                                                 <button id="resumeBtn" class="btn btn-primary">Download Resume</button>
+                                                                                                                 </div>
+
+                                                                                                                 <div class="col-lg-5 text-center reveal">
+                                                                                                                 <img src="resources/images/profile.jpg" class="hero-photo" onerror="this.src='resources/images/profile.png'">
+                                                                                                                 </div>
+
+                                                                                                                 </div>
+                                                                                                                 </div>
+                                                                                                                 </section>
+
+                                                                                                                 <!-- ABOUT -->
+                                                                                                                 <section class="container">
+                                                                                                                 <div class="section-card reveal">
+                                                                                                                 <h2>About Me</h2>
+                                                                                                                 <div id="about"></div>
+                                                                                                                 </div>
+                                                                                                                 </section>
+
+                                                                                                                 <!-- EXPERIENCE -->
+                                                                                                                 <section class="container">
+                                                                                                                 <div class="section-card reveal">
+                                                                                                                 <h2>Experience</h2>
+                                                                                                                 <div id="exp"></div>
+                                                                                                                 </div>
+                                                                                                                 </section>
+
+                                                                                                                 <!-- SKILLS -->
+                                                                                                                 <section class="container">
+                                                                                                                 <div class="section-card reveal">
+                                                                                                                 <h2>Skills</h2>
+                                                                                                                 <div id="skillsWrap"></div>
+                                                                                                                 </div>
+                                                                                                                 </section>
+
+                                                                                                                 <!-- ACCOMPLISHMENTS -->
+                                                                                                                 <section class="container">
+                                                                                                                 <div class="section-card reveal">
+                                                                                                                 <h2>Accomplishments</h2>
+                                                                                                                 <div id="acc" class="row g-3"></div>
+                                                                                                                 </div>
+                                                                                                                 </section>
+
+                                                                                                                 <!-- CONTACT -->
+                                                                                                                 <section class="container">
+                                                                                                                 <div class="section-card reveal">
+                                                                                                                 <h2>Contact</h2>
+                                                                                                                 <div id="contactText"></div>
+                                                                                                                 <div id="contacts" class="row g-3 mt-2"></div>
+                                                                                                                 </div>
+                                                                                                                 </section>
+
+                                                                                                                 <footer class="text-center py-4 text-muted">© 2026 Reymark Aguila</footer>
+
+                                                                                                                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+                                                                                                                 <script>
+                                                                                                                 let pdata=null;
+
+                                                                                                                 /* THEME */
+                                                                                                                 function setTheme(v){
+                                                                                                                   localStorage.setItem('theme',v);
+                                                                                                                     document.documentElement.setAttribute('data-bs-theme',v==='auto'
+                                                                                                                         ?(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')
+                                                                                                                             :v
+                                                                                                                               );
+                                                                                                                               }
+                                                                                                                               setTheme(localStorage.getItem('theme')||'auto');
+                                                                                                                               document.querySelectorAll('[data-theme]').forEach(b=>b.onclick=()=>setTheme(b.dataset.theme));
+
+                                                                                                                               /* EXPERIENCE DURATION */
+                                                                                                                               function diffDate(start,end){
+                                                                                                                                 let s=new Date(start), e=end?new Date(end):new Date();
+                                                                                                                                   let m=(e-s)/2629800000;
+                                                                                                                                     let y=Math.floor(m/12);
+                                                                                                                                       let mo=Math.floor(m%12);
+                                                                                                                                         return (y?y+' yr ':'')+(mo?mo+' mo':'');
+                                                                                                                                         }
+
+                                                                                                                                         fetch('resources/data.json').then(r=>r.json()).then(d=>{
+                                                                                                                                           pdata=d;
+
+                                                                                                                                             brand.textContent=d.name;
+                                                                                                                                               name.textContent=d.name;
+                                                                                                                                                 role.textContent=d.role;
+                                                                                                                                                   aboutTop.innerHTML=d.about;
+                                                                                                                                                     document.getElementById('about').innerHTML=d.about;
+
+                                                                                                                                                       github.href=d.github;
+                                                                                                                                                         linkedin.href=d.linkedin;
+                                                                                                                                                           facebook.href=d.facebook;
+
+                                                                                                                                                             contactText.innerHTML=d.contactDes||'';
+
+                                                                                                                                                               /* EXPERIENCE */
+                                                                                                                                                                 exp.innerHTML=d.experience.map((x,i)=>`
+                                                                                                                                                                     <div class="row align-items-center mb-3">
+                                                                                                                                                                           <div class="col-md-2">
+                                                                                                                                                                                   <img class="exp-logo" src="resources/images/experience/${i+1}.jpg">
+                                                                                                                                                                                         </div>
+                                                                                                                                                                                               <div class="col-md-10">
+                                                                                                                                                                                                       <h5>${x.role}</h5>
+                                                                                                                                                                                                               <div class="fw-semibold">${x.company}</div>
+                                                                                                                                                                                                                       <small class="text-muted">
+                                                                                                                                                                                                                                 ${x.dtStart} - ${x.dtEnd || 'Present'} • ${diffDate(x.dtStart,x.dtEnd)}
+                                                                                                                                                                                                                                         </small>
+                                                                                                                                                                                                                                                 <div>${x.loc}</div>
+                                                                                                                                                                                                                                                       </div>
+                                                                                                                                                                                                                                                           </div>
+                                                                                                                                                                                                                                                             `).join('');
+
+                                                                                                                                                                                                                                                               /* SKILLS */
+                                                                                                                                                                                                                                                                 skillsWrap.innerHTML=d.skills.map(s=>{
+                                                                                                                                                                                                                                                                     let icon='•';
+                                                                                                                                                                                                                                                                         let t=s.toLowerCase();
+                                                                                                                                                                                                                                                                             if(t.includes('html'))icon='🌐';
+                                                                                                                                                                                                                                                                                 else if(t.includes('css'))icon='🎨';
+                                                                                                                                                                                                                                                                                     else if(t.includes('js'))icon='⚡';
+                                                                                                                                                                                                                                                                                         else if(t.includes('bootstrap'))icon='🅱️';
+                                                                                                                                                                                                                                                                                             else if(t.includes('.net'))icon='⚙️';
+                                                                                                                                                                                                                                                                                                 else if(t.includes('sql'))icon='🗄️';
+                                                                                                                                                                                                                                                                                                     else if(t.includes('azure'))icon='☁️';
+                                                                                                                                                                                                                                                                                                         return `<span class="skill">${icon} ${s}</span>`;
+                                                                                                                                                                                                                                                                                                           }).join('');
+
+                                                                                                                                                                                                                                                                                                             /* ACCOMPLISHMENTS */
+                                                                                                                                                                                                                                                                                                               acc.innerHTML=(d.accomplishments||[]).map((a,i)=>`
+                                                                                                                                                                                                                                                                                                                   <div class="col-md-4">
+                                                                                                                                                                                                                                                                                                                         <div class="card p-2 h-100">
+                                                                                                                                                                                                                                                                                                                                 <img class="acc-thumb" src="resources/images/accomplishments/${i+1}.jpg">
+                                                                                                                                                                                                                                                                                                                                         <div class="p-2">
+                                                                                                                                                                                                                                                                                                                                                   <h6 class="fw-bold">${a.title}</h6>
+                                                                                                                                                                                                                                                                                                                                                             <small class="text-muted">${a.description}</small>
+                                                                                                                                                                                                                                                                                                                                                                     </div>
+                                                                                                                                                                                                                                                                                                                                                                           </div>
+                                                                                                                                                                                                                                                                                                                                                                               </div>
+                                                                                                                                                                                                                                                                                                                                                                                 `).join('');
+
+                                                                                                                                                                                                                                                                                                                                                                                   /* CONTACT */
+                                                                                                                                                                                                                                                                                                                                                                                     contacts.innerHTML=d.contactInfo.map(c=>`
+                                                                                                                                                                                                                                                                                                                                                                                         <div class="col-md-4">
+                                                                                                                                                                                                                                                                                                                                                                                               <a href="${c.link}" class="text-decoration-none">
+                                                                                                                                                                                                                                                                                                                                                                                                       <div class="card p-3 text-center">${c.contact}</div>
+                                                                                                                                                                                                                                                                                                                                                                                                             </a>
+                                                                                                                                                                                                                                                                                                                                                                                                                 </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                   `).join('');
+                                                                                                                                                                                                                                                                                                                                                                                                                   });
+
+                                                                                                                                                                                                                                                                                                                                                                                                                   /* RESUME */
+                                                                                                                                                                                                                                                                                                                                                                                                                   resumeBtn.onclick=function(){
+                                                                                                                                                                                                                                                                                                                                                                                                                     if(!pdata)return;
+                                                                                                                                                                                                                                                                                                                                                                                                                       let w=window.open('','_blank');
+
+                                                                                                                                                                                                                                                                                                                                                                                                                         let exp=pdata.experience.map(x=>`
+                                                                                                                                                                                                                                                                                                                                                                                                                             <p><b>${x.role}</b> (${diffDate(x.dtStart,x.dtEnd)})<br>
+                                                                                                                                                                                                                                                                                                                                                                                                                                 ${x.company}<br>${x.loc}</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                   `).join('');
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                     let contacts=pdata.contactInfo.map(c=>c.contact).join('<br>');
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                       w.document.write(`
+                                                                                                                                                                                                                                                                                                                                                                                                                                         <html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                           <body style="font-family:Arial;padding:30px">
+                                                                                                                                                                                                                                                                                                                                                                                                                                               <h1>${pdata.name}</h1>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                   <h3>${pdata.role}</h3>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                       <p>${pdata.about}</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                           <hr>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                               <h2>Experience</h2>${exp}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                   <hr>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                       <h2>Skills</h2>${pdata.skills.join(', ')}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                           <hr>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                               <h2>Contact</h2>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ${contacts}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     </body>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       </html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         `);
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           w.document.close();
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             setTimeout(()=>w.print(),600);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             };
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             /* REVEAL */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('show')),{threshold:.1});
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             document.querySelectorAll('.reveal').forEach(e=>io.observe(e));
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             </script>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             </body>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             </html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
