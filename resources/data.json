@@ -1,8 +1,8 @@
 {
   "name": "Reymark Aguila",
-  "role": "Full Stack Developer",
+  "role": "Senior Full Stack Developer & Solutions Architect",
   "contact": "+639668862186 | +639515853134",
-  "about": "Solution-driven <strong>web developer</strong> adept at contributing to highly collaborative work environment and finding solutions.<br/>Proven experience developing consumer-focused websites using HTML, CSS, AngularJS and C# .Net Core.<br/>Good knowledge of the best practices for web design, user experience, and speed.",
+  "about": "Innovative <strong>Full Stack Developer</strong> with over a decade of experience building scalable, consumer-centric web applications.<br/>Specializing in the <strong>.NET ecosystem</strong> and modern frontend frameworks, I bridge the gap between complex backend logic and seamless user experiences.<br/>Committed to clean code, high-performance architecture, and continuous technical evolution.",
   "facebook": "https://fb.com/aguila.reymark",
   "linkedin": "https://linkedin.com/in/reymark-aguila",
   "github": "https://github.com/rmrkweb",
@@ -13,7 +13,7 @@
       "role": "Lead System Developer",
       "dtStart": "May 2013",
       "dtEnd": "March 2018",
-      "loc": "FPIP Brgy. Sta. Anastacia, Sto. Tomas, Batangas"
+      "loc": "Sto. Tomas, Batangas, Philippines"
     },
     {
       "id": 2,
@@ -34,6 +34,86 @@
     {
       "id": 4,
       "company": "<a href='https://g.co/kgs/phfLHJF' target='_blank'>aMACEzing Printing Services</a>",
+      "role": "Founder & Technical Director",
+      "dtStart": "August 2020",
+      "dtEnd": "Present",
+      "loc": "Lipa City, Batangas, Philippines"
+    },
+    {
+      "id": 5,
+      "company": "ConnectOS",
+      "role": "Senior Frontend Developer",
+      "dtStart": "January 2023",
+      "dtEnd": "Present",
+      "loc": "Mega Tower, EDSA, Manila, Philippines"
+    }
+  ],
+  "skills": [
+    "<i class=\"mdi mdi-18px me-1 mdi-microsoft-visual-studio\" style=\"line-height:1;\"></i>Full Stack Architecture",
+    "<i class=\"mdi mdi-18px me-1 mdi-dot-net\" style=\"line-height:1;\"></i>ASP.NET Core & Web API",
+    "<i class=\"mdi mdi-18px me-1 mdi-dot-net\" style=\"line-height:1;\"></i>C# .NET Framework",
+    "<i class=\"mdi mdi-18px me-1 mdi-database-check\" style=\"line-height:1;\"></i>MS SQL & MySQL Optimization",
+    "<i class=\"mdi mdi-18px me-1 mdi-angularjs\" style=\"line-height:1;\"></i>AngularJS & Modern Frontend",
+    "<i class=\"mdi mdi-18px me-1 mdi-jquery\" style=\"line-height:1;\"></i>jQuery & Legacy Integration",
+    "<i class=\"mdi mdi-18px me-1 mdi-nodejs\" style=\"line-height:1;\"></i>Node.JS Ecosystem",
+    "<i class=\"mdi mdi-18px me-1 mdi-bootstrap\" style=\"line-height:1;\"></i>Responsive Design (Bootstrap 5)",
+    "<i class=\"mdi mdi-18px me-1 mdi-language-html5\" style=\"line-height:1;\"></i>Semantic HTML5 & SEO",
+    "<i class=\"mdi mdi-18px me-1 mdi-language-javascript\" style=\"line-height:1;\"></i>Advanced JavaScript (ES6+)",
+    "<i class=\"mdi mdi-18px me-1 mdi-sass\" style=\"line-height:1;\"></i>SASS & Modern CSS",
+    "<i class=\"mdi mdi-18px me-1 mdi-adobe\" style=\"line-height:1;\"></i>Adobe Creative Cloud Suite"
+  ],
+  "accomplishments": [
+    {
+      "id": 1,
+      "title": "Award-Winning Web Design",
+      "description": "Recognized as a Top 3 Finalist in the prestigious Lipa City Web Design Competition (December 2020), showcasing excellence in UX/UI and creative problem-solving."
+    },
+    {
+      "id": 2,
+      "title": "Enterprise Resource & Learning Hub",
+      "description": "Architected an integrated Departmental Portal featuring automated Learning Management, SMS/Email marketing automation, and a centralized resource library to streamline internal communications."
+    },
+    {
+      "id": 3,
+      "title": "Interactive Awarding & Voting Platform",
+      "description": "Developed a high-traffic web application for major corporate awarding events, featuring real-time nomination tracking and a secure online voting system for global stakeholders."
+    },
+    {
+      "id": 4,
+      "title": "Automated Performance Appraisal System",
+      "description": "Engineered a mission-critical appraisal platform that digitizes annual performance tracking, goal alignment, and KPI metrics for large-scale employee evaluations."
+    },
+    {
+      "id": 5,
+      "title": "Integrated LMS for Career Growth",
+      "description": "Designed a comprehensive Learning Management System directly synchronized with employee appraisal metrics, fostering a culture of self-development and professional tracking."
+    }
+  ],
+  "contactDes": "I am always open to discussing technical partnerships, new ventures, or innovative commissions. Let's connect:",
+  "lastUpdate": "May 2026",
+  "contactInfo": [
+    {
+      "contact": "aguila.reymark@gmail.com",
+      "icon": "mdi-email",
+      "link": "mailto:aguila.reymark@gmail.com"
+    },
+    {
+      "contact": "+63 966 886 2186",
+      "icon": "mdi-phone",
+      "link": "tel:+639668862186"
+    },
+    {
+      "contact": "WhatsApp",
+      "icon": "mdi-whatsapp",
+      "link": "https://wa.me/639668862186"
+    },
+    {
+      "contact": "Messenger",
+      "icon": "mdi-facebook-messenger",
+      "link": "https://m.me/aguila.reymark"
+    }
+  ]
+}
       "role": "Business Owner",
       "dtStart": "August 2020",
       "dtEnd": "Present",
