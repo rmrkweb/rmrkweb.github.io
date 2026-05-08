@@ -87,7 +87,13 @@
       "id": 5,
       "title": "Integrated LMS for Career Growth",
       "description": "Designed a comprehensive Learning Management System directly synchronized with employee appraisal metrics, fostering a culture of self-development and professional tracking."
-    }
+    },
+    {
+  "id": 6,
+  "title": "Introspectus Enterprise Assurance",
+  "description": "Architected and managed the frontend of an Australian enterprise assurance platform. Developed integrated modules for cybersecurity posture, productivity monitoring, and software analytics, providing real-time evidence-based insights."
+}
+
   ],
   "contactDes": "I am always open to discussing technical partnerships, new ventures, or innovative commissions. Let's connect:",
   "lastUpdate": "May 2026",
