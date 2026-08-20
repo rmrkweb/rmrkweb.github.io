@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Reymark Aguila | Senior Solutions Architect</title><link rel="icon" type="image/png" href="./resources/images/icon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reymark Aguila | Senior Solutions Architect</title>
+<link rel="icon" type="image/png" href="./resources/images/icon.png">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GM7L425MDL"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -9,71 +12,522 @@
   gtag('js', new Date());
   gtag('config', 'G-GM7L425MDL');
 </script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@5.4.55/css/materialdesignicons.min.css">
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!--
+  DESIGN NOTE (kept in-file for future edits):
+  Subject: a Senior Solutions Architect's portfolio/résumé.
+  Signature idea: the "blueprint" — an architect's own working document —
+  literalized as the visual system. Hero is a live 3D wireframe schematic
+  that assembles itself (nodes connecting into a structure), because that
+  IS what a solutions architect does: turns disconnected requirements into
+  a connected system. Section furniture (sheet numbers, registration
+  marks, coordinate labels) borrows from actual architectural drawing
+  sets rather than generic "01/02/03" numbering.
+  Palette: void/near-black base, blueprint cyan (the drawing itself),
+  brass (drafting-tool warmth, used sparingly), paper (off-white ink).
+  Type: Space Grotesk (display, technical geometry) + IBM Plex Sans (body)
+  + IBM Plex Mono (labels/data — a spec-sheet register).
+  Single dark register throughout — a light-mode toggle would break the
+  blueprint-room mood, so it was dropped in favor of one committed scene.
+-->
+
 <style>
-:root{--bs-primary:#198754;--header-bg:#111418;--card-bg:rgba(255,255,255,0.04);--accent-glow:rgba(25,135,84,0.15);--text-heading:#fff;--footer-bg:#0b0d0f}
-[data-bs-theme=light]{--header-bg:#fff;--card-bg:rgba(0,0,0,0.03);--accent-glow:rgba(25,135,84,0.05);--text-heading:#212529;--footer-bg:#f8f9fa}
-body{font-family:Inter,system-ui,-apple-system,sans-serif;transition:background-color .3s ease;overflow-x:hidden;width:100%}
-#app{overflow-x:hidden}
-.navbar{background-color:var(--header-bg)!important;border-bottom:3px solid var(--bs-primary);z-index:1030;box-shadow:0 4px 15px rgba(0,0,0,.2)}
-.brand-name{font-weight:900;text-transform:uppercase;letter-spacing:-.5px;font-size:1.6rem}.brand-name span{color:var(--bs-primary)}
+:root{
+  --void:#0a0e12;
+  --surface:#10161d;
+  --surface-2:#161e27;
+  --blueprint:#3fc4d1;
+  --blueprint-dim:rgba(63,196,209,.14);
+  --brass:#c9974c;
+  --brass-dim:rgba(201,151,76,.16);
+  --paper:#eae7df;
+  --graphite:#8b93a0;
+  --line:rgba(234,231,223,.09);
+  --font-display:'Space Grotesk',sans-serif;
+  --font-body:'IBM Plex Sans',sans-serif;
+  --font-mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box}
+[v-cloak]{display:none}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--void);color:var(--paper);
+  font-family:var(--font-body);font-size:16px;line-height:1.6;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--blueprint);color:var(--void)}
+:focus-visible{outline:2px solid var(--blueprint);outline-offset:3px}
 
-/* Improved Responsive Profile Card - FIXED TO PREVENT CROPPING */
-.profile-3d-card{width:100%;max-width:280px;min-height:340px;height:auto;background:#1a1d21;border-radius:50px 15px 80px 15px;transition:.6s cubic-bezier(.23,1,.32,1);box-shadow:20px 20px 50px rgba(0,0,0,.4);overflow:hidden;border:none;display:flex;align-items:center;justify-content:center}
-.profile-3d-card img{width:100%;height:100%;object-fit:contain;background-color:var(--header-bg)}
+.mono{font-family:var(--font-mono)}
+.eyebrow{
+  font-family:var(--font-mono);font-size:.72rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--blueprint);display:flex;align-items:center;gap:10px;
+}
+.eyebrow::before{content:'';width:26px;height:1px;background:var(--blueprint)}
 
-@media (min-width: 992px) { .profile-3d-card { transform: rotateY(-12deg); } .profile-3d-card:hover{transform:rotateY(0) scale(1.02)} }
+/* ---------- Layout shell ---------- */
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.sheet{position:relative;border-top:1px solid var(--line);padding:90px 0}
+.sheet::before,.sheet::after{
+  content:'+';position:absolute;font-family:var(--font-mono);color:var(--line);font-size:14px;
+  top:-8px;
+}
+.sheet::before{left:0}
+.sheet::after{right:0}
+.sheet-index{
+  position:absolute;top:32px;right:28px;font-family:var(--font-mono);font-size:.7rem;
+  color:var(--graphite);letter-spacing:.08em;writing-mode:vertical-rl;
+}
+@media (max-width:768px){.sheet-index{display:none}}
 
-.experience-container{position:relative;padding:20px 0}.exp-item{position:relative;display:flex;gap:40px;margin-bottom:50px}.exp-date-track{flex:0 0 130px;text-align:right;padding-top:15px}.exp-date-text{font-weight:800;color:var(--bs-primary);font-size:.85rem;letter-spacing:1px;display:block}
-.exp-main{flex:1;position:relative;padding-left:40px;border-left:2px solid rgba(25,135,84,.2)}.exp-main::before{content:'';position:absolute;left:-11px;top:18px;width:20px;height:20px;background:var(--header-bg);border:4px solid var(--bs-primary);border-radius:50%;z-index:2}
-.exp-card{background:var(--card-bg);border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:30px;transition:.4s ease}.exp-card:hover{transform:translateX(10px);border-color:var(--bs-primary);background:var(--accent-glow)}
-.exp-role-title{color:var(--text-heading);font-weight:700;margin-bottom:.5rem}.exp-logo-wrapper{width:60px;height:60px;background:#fff;border-radius:14px;padding:8px;display:flex;align-items:center;justify-content:center;box-shadow:0 5px 15px rgba(0,0,0,.1);margin-bottom:20px}.exp-logo-wrapper img{width:100%;height:100%;object-fit:contain}
-.skill-badge{background:rgba(25,135,84,.1);color:var(--bs-primary);border:1px solid rgba(25,135,84,0.3);padding:10px 22px;border-radius:50px;font-weight:600;transition:.3s}.skill-badge:hover{background:var(--bs-primary);color:#fff}.theme-control{position:fixed;bottom:25px;right:25px;z-index:1050;background:var(--header-bg);border:2px solid var(--bs-primary);border-radius:50px}.duration-highlight{font-size:.8rem;color:var(--bs-primary);font-weight:700}
-
-@media (max-width: 576px) {
-    .display-3 { font-size: 2.5rem; }
-    .exp-main { padding-left: 20px; }
-    .exp-card { padding: 20px; }
+/* ---------- Nav ---------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:22px 28px;mix-blend-mode:normal;
+  transition:background-color .4s ease,border-color .4s ease;
+  border-bottom:1px solid transparent;
+}
+.nav.is-scrolled{background:rgba(10,14,18,.86);backdrop-filter:blur(10px);border-bottom-color:var(--line)}
+.brand{font-family:var(--font-display);font-weight:600;font-size:1.05rem;letter-spacing:.02em}
+.brand em{font-style:normal;color:var(--blueprint)}
+.nav-links{display:flex;gap:34px;list-style:none;margin:0;padding:0}
+.nav-links a{
+  font-family:var(--font-mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--graphite);position:relative;padding-bottom:4px;
+}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--blueprint);transition:width .3s ease}
+.nav-links a:hover{color:var(--paper)}
+.nav-links a:hover::after{width:100%}
+.nav-toggle{display:none;background:none;border:1px solid var(--line);color:var(--paper);border-radius:6px;padding:8px 10px}
+@media (max-width:768px){
+  .nav-links{position:fixed;top:64px;right:28px;left:28px;background:var(--surface);border:1px solid var(--line);
+    border-radius:10px;flex-direction:column;padding:18px;gap:18px;display:none}
+  .nav-links.is-open{display:flex}
+  .nav-toggle{display:block}
 }
 
-@media screen{#resume-print-zone{display:none}}
-@media print{@page{size:portrait;margin:15mm}body{background:#fff!important;color:#000!important}#app-ui,.navbar,.theme-control,footer{display:none!important}#resume-print-zone{display:block!important;width:100%}.pdf-sec{font-size:12pt;font-weight:800;color:#198754;border-bottom:2px solid #eee;margin-top:20px;margin-bottom:10px;text-transform:uppercase}}
+/* ---------- Hero ---------- */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.hero-canvas{position:absolute;inset:0;z-index:0;opacity:0;transition:opacity 1.6s ease}
+.hero-canvas.is-ready{opacity:1}
+.hero-scrim{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(ellipse 60% 50% at 50% 40%,transparent 0%,rgba(10,14,18,.55) 70%,var(--void) 100%);
+}
+.hero-inner{position:relative;z-index:2;padding-top:90px}
+.hero-coords{
+  font-family:var(--font-mono);font-size:.72rem;color:var(--graphite);letter-spacing:.14em;
+  display:flex;gap:24px;flex-wrap:wrap;margin-bottom:26px;
+}
+.hero-coords span{color:var(--brass)}
+.hero-title{
+  font-family:var(--font-display);font-weight:700;line-height:.98;
+  font-size:clamp(2.6rem,7.2vw,5.4rem);letter-spacing:-.01em;margin:0 0 22px;
+}
+.hero-title .role{color:var(--blueprint);display:block}
+.hero-lede{
+  max-width:560px;color:var(--graphite);font-size:1.08rem;line-height:1.7;margin-bottom:40px;
+}
+.hero-lede strong{color:var(--paper);font-weight:500}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px}
+
+.btn{
+  font-family:var(--font-mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;
+  padding:14px 24px;border-radius:2px;display:inline-flex;align-items:center;gap:10px;
+  border:1px solid var(--line);transition:.3s ease;cursor:pointer;background:transparent;color:var(--paper);
+}
+.btn:hover{border-color:var(--blueprint);color:var(--blueprint);transform:translateY(-2px)}
+.btn-solid{background:var(--blueprint);border-color:var(--blueprint);color:var(--void);font-weight:600}
+.btn-solid:hover{background:var(--paper);border-color:var(--paper);color:var(--void)}
+
+.scroll-cue{
+  position:absolute;bottom:32px;left:28px;z-index:2;display:flex;align-items:center;gap:12px;
+  font-family:var(--font-mono);font-size:.68rem;letter-spacing:.16em;color:var(--graphite);text-transform:uppercase;
+}
+.scroll-cue .line{width:1px;height:38px;background:linear-gradient(var(--blueprint),transparent);animation:pulse-line 2.2s ease-in-out infinite}
+@keyframes pulse-line{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* ---------- Reveal ---------- */
+[data-reveal]{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+[data-reveal].is-visible{opacity:1;transform:translateY(0)}
+
+/* ---------- Section headers ---------- */
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:56px;flex-wrap:wrap}
+.section-title{font-family:var(--font-display);font-weight:600;font-size:clamp(1.8rem,3.6vw,2.6rem);margin:14px 0 0}
+.section-title em{font-style:normal;color:var(--blueprint)}
+.section-note{max-width:320px;color:var(--graphite);font-size:.92rem;text-align:right}
+@media (max-width:768px){.section-note{text-align:left}}
+
+/* ---------- Skills ---------- */
+.skills-grid{display:flex;flex-wrap:wrap;gap:12px}
+.skill-chip{
+  font-family:var(--font-mono);font-size:.82rem;padding:10px 18px;border:1px solid var(--line);
+  border-radius:2px;color:var(--graphite);position:relative;transition:.3s ease;
+}
+.skill-chip::before{content:'§';color:var(--brass);margin-right:8px;opacity:.7}
+.skill-chip:hover{border-color:var(--brass);color:var(--paper);background:var(--brass-dim)}
+
+/* ---------- Experience ---------- */
+.exp-list{display:flex;flex-direction:column}
+.exp-row{
+  display:grid;grid-template-columns:150px 1fr;gap:36px;padding:34px 0;border-top:1px solid var(--line);
+}
+.exp-row:first-child{border-top:1px solid var(--line)}
+.exp-when{padding-top:4px}
+.exp-dates{font-family:var(--font-mono);font-size:.78rem;color:var(--blueprint);letter-spacing:.04em}
+.exp-duration{font-family:var(--font-mono);font-size:.72rem;color:var(--graphite);margin-top:6px}
+.exp-body{display:flex;gap:20px}
+.exp-logo{
+  width:52px;height:52px;flex:none;border-radius:8px;background:var(--paper);padding:8px;
+  display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,.35);
+}
+.exp-logo img{width:100%;height:100%;object-fit:contain}
+.exp-role{font-family:var(--font-display);font-weight:600;font-size:1.2rem;margin:0 0 4px}
+.exp-company{color:var(--brass);font-weight:500;margin:0 0 8px;font-size:.98rem}
+.exp-loc{color:var(--graphite);font-size:.86rem;display:flex;align-items:center;gap:6px}
+@media (max-width:640px){
+  .exp-row{grid-template-columns:1fr}
+  .exp-when{display:flex;gap:14px;align-items:baseline}
+}
+
+/* ---------- Accomplishments ---------- */
+.acc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.acc-card{
+  border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--surface);
+  transition:.4s ease;position:relative;
+}
+.acc-card:hover{border-color:var(--blueprint);transform:translateY(-4px)}
+.acc-media{height:190px;overflow:hidden;position:relative;background:var(--surface-2)}
+.acc-media img{width:100%;height:100%;object-fit:cover;filter:grayscale(.4) contrast(1.05);transition:.6s ease}
+.acc-card:hover .acc-media img{filter:grayscale(0) contrast(1.05);transform:scale(1.04)}
+.acc-media::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(10,14,18,.7));}
+.acc-body{padding:22px}
+.acc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px}
+.acc-title{font-family:var(--font-display);font-weight:600;font-size:1.05rem;margin:0}
+.acc-tag{font-family:var(--font-mono);font-size:.68rem;color:var(--blueprint);border:1px solid var(--blueprint-dim);padding:3px 8px;border-radius:20px;white-space:nowrap}
+.acc-desc{color:var(--graphite);font-size:.9rem;margin:0}
+
+/* ---------- Footer ---------- */
+.footer{border-top:1px solid var(--line);padding:56px 0 40px}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
+.footer-links{display:flex;gap:20px}
+.footer-links a{
+  width:42px;height:42px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:1.05rem;color:var(--graphite);transition:.3s ease;
+}
+.footer-links a:hover{border-color:var(--blueprint);color:var(--blueprint)}
+.footer-meta{font-family:var(--font-mono);font-size:.75rem;color:var(--graphite);letter-spacing:.04em}
+
+@media print{#app-ui,.hero-canvas,.footer{display:none!important}}
+#resume-print-zone{display:none}
+@media print{
+  @page{size:portrait;margin:15mm}
+  body{background:#fff!important;color:#000!important}
+  #resume-print-zone{display:block!important;width:100%}
+  .pdf-sec{font-size:12pt;font-weight:800;color:#1c6b73;border-bottom:2px solid #eee;margin-top:20px;margin-bottom:10px;text-transform:uppercase}
+}
 </style>
 </head>
 <body>
 <div id="app">
-<div id="app-ui">
-<nav class="navbar navbar-expand-lg sticky-top"><div class="container"><a class="navbar-brand brand-name" href="#">Reymark <span>Aguila</span></a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto gap-3 fw-bold"><li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li><li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li><li class="nav-item"><a class="nav-link" href="#accomplishments">Projects</a></li></ul></div></div></nav>
-<div class="theme-control shadow p-1"><div class="btn-group"><button v-for="m in ['light','dark']" :key="m" @click="setTheme(m)" class="btn btn-sm rounded-pill px-3" :class="theme===m?'btn-success':'btn-link text-secondary text-decoration-none'"><i :class="m==='light'?'bi bi-sun-fill':'bi bi-moon-stars-fill'"></i></button></div></div>
-<div v-if="!loading" class="container">
-<header class="row align-items-center g-5 py-5 mt-2"><div class="col-lg-5 text-center" data-aos="fade-right"><div class="profile-3d-card mx-auto"><img src="./resources/images/profile.jpg" alt="Profile" @error="e=>e.target.src='https://via.placeholder.com/280x340'"></div></div><div class="col-lg-7" data-aos="fade-up"><h1 class="display-3 fw-bolder mb-3">Senior <span class="text-success">Solutions</span> Architect</h1><p class="lead text-secondary mb-4 fs-4" v-html="data.about"></p><div class="d-flex gap-3 flex-wrap"><button @click="generatePDF" class="btn btn-success btn-sm rounded-pill px-4"><i class="bi bi-file-earmark-pdf-fill me-1"></i>Download Resume</button><a :href="data.github" target="_blank" class="btn btn-success btn-sm rounded-pill px-4"><i class="bi bi-github me-1"></i>GitHub</a><a :href="data.linkedin" target="_blank" class="btn btn-success btn-sm rounded-pill px-4"><i class="bi bi-linkedin me-1"></i>LinkedIn</a><a :href="data.facebook" target="_blank" class="btn btn-success btn-sm rounded-pill px-4"><i class="bi bi-facebook me-1"></i>Facebook</a></div></div></header>
-<section id="skills" class="py-5" data-aos="fade-up"><div class="text-center mb-5"><h2 class="display-5 fw-bold">Core <span class="text-success">Technologies</span></h2><div class="mx-auto bg-success" style="width:60px;height:4px"></div></div><div class="d-flex flex-wrap justify-content-center gap-3"><div v-for="s in data.skills" :key="s" class="skill-badge" v-html="s"></div></div></section>
-<section id="experience" class="py-5"><div class="text-center mb-5" data-aos="fade-up"><h2 class="display-5 fw-bold">Professional <span class="text-success">History</span></h2></div><div class="experience-container"><div v-for="(job,index) in data.experience" :key="job.id" class="exp-item" data-aos="fade-up" :data-aos-delay="index*100"><div class="exp-date-track d-none d-md-block"><span class="exp-date-text">{{job.dtStart}}</span><span class="text-muted small">—</span><span class="exp-date-text">{{job.dtEnd}}</span><div class="duration-highlight mt-1">{{calculateDuration(job.dtStart,job.dtEnd)}}</div></div><div class="exp-main"><div class="exp-card"><div class="d-flex justify-content-between align-items-start flex-wrap"><div class="exp-logo-wrapper"><img :src="'./resources/images/experience/'+job.id+'.jpg'" @error="e=>e.target.src='https://via.placeholder.com/50?text=Logo'"></div><div class="d-md-none text-end mb-3"><div class="fw-bold text-success small">{{job.dtStart}} - {{job.dtEnd}}</div><div class="duration-highlight">{{calculateDuration(job.dtStart,job.dtEnd)}}</div></div></div><h4 class="fw-bold mb-1 text-success" v-html="job.company"></h4><h5 class="exp-role-title">{{job.role}}</h5><p class="text-secondary mb-0 small"><i class="bi bi-geo-alt-fill me-2 text-primary"></i>{{job.loc}}</p></div></div></div></div></section>
-<section id="accomplishments" class="py-5"><h2 class="display-5 fw-bold mb-5 text-center" data-aos="fade-up">Key <span class="text-success">Accomplishments</span></h2><div class="row g-4"><div v-for="item in data.accomplishments" :key="item.id" class="col-md-6 col-lg-4" data-aos="zoom-in"><div class="exp-card h-100 p-3"><div class="rounded-4 overflow-hidden mb-3" style="height:200px"><img :src="'./resources/images/accomplishments/'+item.id+'.jpg'" class="w-100 h-100 object-fit-cover" @error="e=>e.target.src='https://via.placeholder.com/400x200'"></div><div class="d-flex justify-content-between align-items-start mb-2"><h5 class="fw-bold mb-0 text-heading">{{item.title}}</h5><span class="badge bg-success-subtle text-success small">{{calculateDuration(item.startDate,item.endDate)}}</span></div><p class="text-secondary small mb-0">{{item.description}}</p></div></div></div></section>
+
+<div id="app-ui" v-cloak>
+  <nav class="nav" :class="{'is-scrolled':scrolled}">
+    <a href="#" class="brand">Reymark <em>Aguila</em></a>
+    <button class="nav-toggle" @click="navOpen=!navOpen" aria-label="Toggle navigation"><i class="bi bi-list"></i></button>
+    <ul class="nav-links" :class="{'is-open':navOpen}">
+      <li><a href="#skills" @click="navOpen=false">Skills</a></li>
+      <li><a href="#experience" @click="navOpen=false">Experience</a></li>
+      <li><a href="#accomplishments" @click="navOpen=false">Projects</a></li>
+      <li><a href="#contact" @click="navOpen=false">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div v-if="!loading">
+    <!-- HERO -->
+    <section class="hero">
+      <canvas id="schematic" class="hero-canvas" :class="{'is-ready':heroReady}"></canvas>
+      <div class="hero-scrim"></div>
+      <div class="wrap hero-inner">
+        <div class="hero-coords mono">
+          <span>LAT 14.5995&deg;N</span><span>·</span><span>DRAWN BY R. AGUILA</span><span>·</span><span>REV {{new Date().getFullYear()}}</span>
+        </div>
+        <h1 class="hero-title">
+          Senior Solutions
+          <span class="role">Architect</span>
+        </h1>
+        <p class="hero-lede" v-html="data.about"></p>
+        <div class="hero-actions">
+          <button @click="generatePDF" class="btn btn-solid"><i class="bi bi-file-earmark-arrow-down"></i> Download Résumé</button>
+          <a :href="data.github" target="_blank" class="btn"><i class="bi bi-github"></i> GitHub</a>
+          <a :href="data.linkedin" target="_blank" class="btn"><i class="bi bi-linkedin"></i> LinkedIn</a>
+          <a :href="data.facebook" target="_blank" class="btn"><i class="bi bi-facebook"></i> Facebook</a>
+        </div>
+      </div>
+      <div class="scroll-cue"><span class="line"></span> Scroll — Sheet 01 of 04</div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="sheet">
+      <span class="sheet-index mono">SHEET 02 — SPECIFICATION</span>
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <div>
+            <div class="eyebrow">Specification</div>
+            <h2 class="section-title">Core <em>Technologies</em></h2>
+          </div>
+          <p class="section-note">The stack this architecture is built and maintained on.</p>
+        </div>
+        <div class="skills-grid" data-reveal>
+          <div v-for="s in data.skills" :key="s" class="skill-chip" v-html="s"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="sheet">
+      <span class="sheet-index mono">SHEET 03 — RECORD</span>
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <div>
+            <div class="eyebrow">Record of work</div>
+            <h2 class="section-title">Professional <em>History</em></h2>
+          </div>
+          <p class="section-note">Every system leaves a paper trail. Here's mine.</p>
+        </div>
+        <div class="exp-list">
+          <div v-for="job in data.experience" :key="job.id" class="exp-row" data-reveal>
+            <div class="exp-when">
+              <div class="exp-dates mono">{{job.dtStart}} — {{job.dtEnd}}</div>
+              <div class="exp-duration">{{calculateDuration(job.dtStart,job.dtEnd)}}</div>
+            </div>
+            <div class="exp-body">
+              <div class="exp-logo"><img :src="'./resources/images/experience/'+job.id+'.jpg'" @error="e=>e.target.style.display='none'"></div>
+              <div>
+                <h3 class="exp-role">{{job.role}}</h3>
+                <p class="exp-company" v-html="job.company"></p>
+                <p class="exp-loc"><i class="bi bi-geo-alt"></i> {{job.loc}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACCOMPLISHMENTS -->
+    <section id="accomplishments" class="sheet">
+      <span class="sheet-index mono">SHEET 04 — DETAIL</span>
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <div>
+            <div class="eyebrow">Detail views</div>
+            <h2 class="section-title">Key <em>Accomplishments</em></h2>
+          </div>
+          <p class="section-note">Close-ups on the work that mattered most.</p>
+        </div>
+        <div class="acc-grid">
+          <div v-for="item in data.accomplishments" :key="item.id" class="acc-card" data-reveal>
+            <div class="acc-media">
+              <img :src="'./resources/images/accomplishments/'+item.id+'.jpg'" @error="e=>e.target.style.display='none'">
+            </div>
+            <div class="acc-body">
+              <div class="acc-top">
+                <h4 class="acc-title">{{item.title}}</h4>
+                <span class="acc-tag mono">{{calculateDuration(item.startDate,item.endDate)}}</span>
+              </div>
+              <p class="acc-desc">{{item.description}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="footer" id="contact">
+    <div class="wrap footer-inner">
+      <div class="footer-links">
+        <a v-for="info in data.contactInfo" :key="info.contact" :href="info.link" target="_blank"><i :class="'mdi '+info.icon"></i></a>
+      </div>
+      <div class="footer-meta">&copy; {{new Date().getFullYear()}} REYMARK AGUILA — END OF DRAWING SET</div>
+    </div>
+  </footer>
 </div>
-<footer class="py-5 border-top mt-5" style="background-color:var(--footer-bg)"><div class="container text-center"><div class="d-flex justify-content-center gap-4 mb-4"><a v-for="info in data.contactInfo" :key="info.contact" :href="info.link" class="text-success fs-4"><i :class="'mdi '+info.icon"></i></a></div><p class="mb-0 fw-bold">© {{new Date().getFullYear()}} Reymark Aguila</p></div></footer>
-</div>
+
+<!-- PRINT / RESUME VIEW -->
 <div id="resume-print-zone" v-if="!loading">
-<div style="border-bottom:4px solid #198754;padding-bottom:10px;margin-bottom:20px"><h1 style="font-size:28pt;font-weight:900;margin:0">{{data.name}}</h1><div style="font-size:16pt;color:#198754;font-weight:700">{{data.role}}</div><div style="font-size:10pt;color:#555">{{data.contact}} | {{data.github}}</div></div>
-<div class="pdf-sec">Profile</div><div style="font-size:11pt;line-height:1.5" v-html="cleanText(data.about)"></div>
-<div class="pdf-sec">Technical Skills</div><div style="font-size:10pt">{{cleanSkills(data.skills)}}</div>
-<div class="pdf-sec">Experience</div><div v-for="job in data.experience" :key="job.id" style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;font-weight:700"><span>{{job.role}}</span><span>{{job.dtStart}} - {{job.dtEnd}}</span></div><div style="color:#198754;font-weight:700;font-size:10pt"><span v-html="job.company"></span>({{calculateDuration(job.dtStart,job.dtEnd)}})</div><div style="font-size:9pt;color:#666">{{job.loc}}</div></div>
-<div class="pdf-sec">Key Accomplishments</div><div v-for="item in data.accomplishments" :key="item.id" style="margin-bottom:8px"><strong>{{item.title}}</strong>: <span style="font-size:10pt">{{item.description}}</span></div>
-<div style="border-top:1px solid #eee;margin-top:30px;padding-top:10px;text-align:center;font-size:8pt;color:#999">Generated from https://rmrkweb.github.io | {{new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})}}</div>
+  <div style="border-bottom:4px solid #1c6b73;padding-bottom:10px;margin-bottom:20px">
+    <h1 style="font-size:28pt;font-weight:900;margin:0">{{data.name}}</h1>
+    <div style="font-size:16pt;color:#1c6b73;font-weight:700">{{data.role}}</div>
+    <div style="font-size:10pt;color:#555">{{data.contact}} | {{data.github}}</div>
+  </div>
+  <div class="pdf-sec">Profile</div>
+  <div style="font-size:11pt;line-height:1.5" v-html="cleanText(data.about)"></div>
+  <div class="pdf-sec">Technical Skills</div>
+  <div style="font-size:10pt">{{cleanSkills(data.skills)}}</div>
+  <div class="pdf-sec">Experience</div>
+  <div v-for="job in data.experience" :key="job.id" style="margin-bottom:12px">
+    <div style="display:flex;justify-content:space-between;font-weight:700"><span>{{job.role}}</span><span>{{job.dtStart}} - {{job.dtEnd}}</span></div>
+    <div style="color:#1c6b73;font-weight:700;font-size:10pt"><span v-html="job.company"></span> ({{calculateDuration(job.dtStart,job.dtEnd)}})</div>
+    <div style="font-size:9pt;color:#666">{{job.loc}}</div>
+  </div>
+  <div class="pdf-sec">Key Accomplishments</div>
+  <div v-for="item in data.accomplishments" :key="item.id" style="margin-bottom:8px">
+    <strong>{{item.title}}</strong>: <span style="font-size:10pt">{{item.description}}</span>
+  </div>
+  <div style="border-top:1px solid #eee;margin-top:30px;padding-top:10px;text-align:center;font-size:8pt;color:#999">
+    Generated from https://rmrkweb.github.io | {{new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})}}
+  </div>
 </div>
+
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
 <script>
-const{createApp,ref,onMounted,nextTick}=Vue;createApp({setup(){const data=ref({}),theme=ref('dark'),loading=ref(!0);const setTheme=t=>{theme.value=t;document.documentElement.setAttribute('data-bs-theme',t);localStorage.setItem('ra-portfolio-theme',t)};
-const calculateDuration=(s,e)=>{if(!s||s.toLowerCase()==='present')return"";const sd=new Date(s),ed=(!e||e.toLowerCase()==='present')?new Date():new Date(e);if(isNaN(sd.getTime()))return"";let m=(ed.getFullYear()-sd.getFullYear())*12+(ed.getMonth()-sd.getMonth());const y=Math.floor(m/12),mo=m%12;let r=[];if(y>0)r.push(`${y}yr${y>1?'s':''}`);if(mo>0)r.push(`${mo}mo${mo>1?'s':''}`);return r.join(' ')||"1mo"};
-const cleanText=t=>t?t.replace(/<br\s*\/?>/gi, '\n').replace(/<\/?[^>]+(>|$)/g, ""):"";const cleanSkills=s=>s?s.map(i=>i.replace(/<\/?[^>]+(>|$)/g,"")).join(" • "):"";const generatePDF=()=>{window.print()};
-onMounted(async()=>{setTheme(localStorage.getItem('ra-portfolio-theme')||'dark');try{const res=await fetch('./resources/data.json');data.value=await res.json();loading.value=!1;await nextTick();AOS.init({duration:800,once:!0})}catch(err){console.error(err)}});
-return{data,theme,setTheme,loading,calculateDuration,generatePDF,cleanSkills,cleanText}}}).mount('#app');
+const { createApp, ref, onMounted, nextTick } = Vue;
+
+createApp({
+  setup(){
+    const data = ref({});
+    const loading = ref(true);
+    const navOpen = ref(false);
+    const scrolled = ref(false);
+    const heroReady = ref(false);
+
+    const calculateDuration = (s,e) => {
+      if(!s || s.toLowerCase()==='present') return "";
+      const sd = new Date(s), ed = (!e || e.toLowerCase()==='present') ? new Date() : new Date(e);
+      if(isNaN(sd.getTime())) return "";
+      let m = (ed.getFullYear()-sd.getFullYear())*12 + (ed.getMonth()-sd.getMonth());
+      const y = Math.floor(m/12), mo = m%12;
+      let r=[]; if(y>0) r.push(`${y}yr${y>1?'s':''}`); if(mo>0) r.push(`${mo}mo${mo>1?'s':''}`);
+      return r.join(' ') || "1mo";
+    };
+    const cleanText = t => t ? t.replace(/<br\s*\/?>/gi,'\n').replace(/<\/?[^>]+(>|$)/g,"") : "";
+    const cleanSkills = s => s ? s.map(i=>i.replace(/<\/?[^>]+(>|$)/g,"")).join(" • ") : "";
+    const generatePDF = () => window.print();
+
+    onMounted(async () => {
+      window.addEventListener('scroll', () => { scrolled.value = window.scrollY > 40; });
+
+      try {
+        const res = await fetch('./resources/data.json');
+        data.value = await res.json();
+      } catch(err){
+        console.error(err);
+        // Fallback sample content so the layout is inspectable without a real data.json
+        data.value = {
+          name:"Reymark Aguila", role:"Senior Solutions Architect", contact:"reymark@example.com",
+          about:"I design and ship <strong>cloud-native systems</strong> that hold up under real load — from architecture reviews to the on-call rotation.",
+          github:"#", linkedin:"#", facebook:"#",
+          skills:["AWS","Kubernetes","Terraform","Node.js","Vue","PostgreSQL","Kafka","CI/CD"],
+          experience:[
+            {id:"1",company:"Northwind Cloud",role:"Senior Solutions Architect",loc:"Remote",dtStart:"2022-01",dtEnd:"Present"},
+            {id:"2",company:"Vertex Systems",role:"Cloud Architect",loc:"Manila, PH",dtStart:"2019-03",dtEnd:"2021-12"}
+          ],
+          accomplishments:[
+            {id:"1",title:"Migrated core platform to Kubernetes",description:"Cut infra cost 34% and deploy time from 40 min to under 4.",startDate:"2023-01",endDate:"2023-09"},
+            {id:"2",title:"Built the internal DevX platform",description:"Adopted by 12 teams within two quarters.",startDate:"2022-04",endDate:"2022-11"}
+          ],
+          contactInfo:[
+            {contact:"email",link:"mailto:reymark@example.com",icon:"mdi-email-outline"},
+            {contact:"github",link:"#",icon:"mdi-github"}
+          ]
+        };
+      }
+      loading.value = false;
+      await nextTick();
+
+      // Scroll reveal
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('[data-reveal]').forEach((el,i)=>{
+        el.style.transitionDelay = (i % 6) * 60 + 'ms';
+        io.observe(el);
+      });
+
+      initSchematic();
+    });
+
+    // ---- Three.js hero: a schematic node network that assembles itself ----
+    function initSchematic(){
+      const canvas = document.getElementById('schematic');
+      if(!canvas || typeof THREE === 'undefined') return;
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      const scene = new THREE.Scene();
+      scene.fog = new THREE.FogExp2(0x0a0e12, 0.055);
+
+      const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 100);
+      camera.position.set(0, 0.4, 9);
+
+      const group = new THREE.Group();
+      scene.add(group);
+
+      // Icosahedral schematic — vertices as nodes, edges as connections
+      const geo = new THREE.IcosahedronGeometry(3.1, 1);
+      const edges = new THREE.EdgesGeometry(geo);
+      const lineMat = new THREE.LineBasicMaterial({ color: 0x3fc4d1, transparent:true, opacity: 0.35 });
+      const lines = new THREE.LineSegments(edges, lineMat);
+      group.add(lines);
+
+      const pointsMat = new THREE.PointsMaterial({ color: 0xc9974c, size: 0.09, transparent:true, opacity:0.95 });
+      const points = new THREE.Points(geo, pointsMat);
+      group.add(points);
+
+      // Outer faint grid plane for depth
+      const grid = new THREE.GridHelper(40, 40, 0x1a222c, 0x121820);
+      grid.position.y = -4.2;
+      scene.add(grid);
+
+      let mouseX = 0, mouseY = 0;
+      window.addEventListener('mousemove', (e)=>{
+        mouseX = (e.clientX / window.innerWidth - 0.5);
+        mouseY = (e.clientY / window.innerHeight - 0.5);
+      });
+
+      function onResize(){
+        camera.aspect = window.innerWidth/window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      }
+      window.addEventListener('resize', onResize);
+      onResize();
+
+      let assembled = 0; // 0 -> 1 assembly progress
+      const startScale = reduceMotion ? 1 : 0.4;
+      group.scale.setScalar(startScale);
+
+      function animate(){
+        requestAnimationFrame(animate);
+        if(!reduceMotion){
+          assembled = Math.min(1, assembled + 0.012);
+          const eased = 1 - Math.pow(1-assembled, 3);
+          group.scale.setScalar(startScale + (1-startScale)*eased);
+          lineMat.opacity = 0.1 + 0.25*eased;
+          group.rotation.y += 0.0016;
+          group.rotation.x += 0.0004;
+          group.rotation.y += mouseX * 0.0012;
+          group.rotation.x += mouseY * 0.0008;
+        }
+        renderer.render(scene, camera);
+      }
+      animate();
+      requestAnimationFrame(()=> heroReady.value = true);
+    }
+
+    return { data, loading, navOpen, scrolled, heroReady, calculateDuration, generatePDF, cleanSkills, cleanText };
+  }
+}).mount('#app');
 </script>
 </body>
 </html>
