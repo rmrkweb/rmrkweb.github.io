@@ -49,18 +49,18 @@
     }
   ],
   "skills": [
-    "<i class=\"mdi mdi-18px me-1 mdi-microsoft-visual-studio\" style=\"line-height:1;\"></i>Full Stack Architecture",
-    "<i class=\"mdi mdi-18px me-1 mdi-dot-net\" style=\"line-height:1;\"></i>ASP.NET Core & Web API",
-    "<i class=\"mdi mdi-18px me-1 mdi-dot-net\" style=\"line-height:1;\"></i>C# .NET Framework",
-    "<i class=\"mdi mdi-18px me-1 mdi-database-check\" style=\"line-height:1;\"></i>MS SQL & MySQL Optimization",
-    "<i class=\"mdi mdi-18px me-1 mdi-angularjs\" style=\"line-height:1;\"></i>AngularJS & Modern Frontend",
-    "<i class=\"mdi mdi-18px me-1 mdi-jquery\" style=\"line-height:1;\"></i>jQuery & Legacy Integration",
-    "<i class=\"mdi mdi-18px me-1 mdi-nodejs\" style=\"line-height:1;\"></i>Node.JS Ecosystem",
-    "<i class=\"mdi mdi-18px me-1 mdi-bootstrap\" style=\"line-height:1;\"></i>Responsive Design (Bootstrap 5)",
-    "<i class=\"mdi mdi-18px me-1 mdi-language-html5\" style=\"line-height:1;\"></i>Semantic HTML5 & SEO",
-    "<i class=\"mdi mdi-18px me-1 mdi-language-javascript\" style=\"line-height:1;\"></i>Advanced JavaScript (ES6+)",
-    "<i class=\"mdi mdi-18px me-1 mdi-sass\" style=\"line-height:1;\"></i>SASS & Modern CSS",
-    "<i class=\"mdi mdi-18px me-1 mdi-adobe\" style=\"line-height:1;\"></i>Adobe Creative Cloud Suite"
+    "Full Stack Architecture",
+    "ASP.NET Core & Web API",
+    "C# .NET Framework",
+    "MS SQL & MySQL Optimization",
+    "AngularJS & Modern Frontend",
+    "jQuery & Legacy Integration",
+    "Node.JS Ecosystem",
+    "Responsive Design (Bootstrap 5)",
+    "Semantic HTML5 & SEO",
+    "Advanced JavaScript (ES6+)",
+    "SASS & Modern CSS",
+    "Adobe Creative Cloud Suite"
   ],
   "accomplishments": [
     {
