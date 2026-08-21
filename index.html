@@ -14,6 +14,7 @@
 </script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@5.4.55/css/materialdesignicons.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devicon@2.15.1/devicon.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
@@ -165,13 +166,25 @@ a{color:inherit;text-decoration:none}
 @media (max-width:768px){.section-note{text-align:left}}
 
 /* ---------- Skills ---------- */
-.skills-grid{display:flex;flex-wrap:wrap;gap:12px}
-.skill-chip{
-  font-family:var(--font-mono);font-size:.82rem;padding:10px 18px;border:1px solid var(--line);
-  border-radius:2px;color:var(--graphite);position:relative;transition:.3s ease;
+.tech-marquee{
+  position:relative;width:100%;overflow:hidden;padding:26px 0;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);
 }
-.skill-chip::before{content:'§';color:var(--brass);margin-right:8px;opacity:.7}
-.skill-chip:hover{border-color:var(--brass);color:var(--paper);background:var(--brass-dim)}
+.tech-track{
+  display:flex;width:max-content;animation:marquee-scroll linear infinite;
+}
+.tech-marquee:hover .tech-track{animation-play-state:paused}
+@keyframes marquee-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.tech-item{
+  display:flex;align-items:center;gap:12px;padding:0 34px;white-space:nowrap;
+  border-right:1px solid var(--line);color:var(--graphite);
+}
+.tech-icon{font-size:1.5rem;color:var(--blueprint);flex:none}
+.tech-icon--fallback{font-size:1.15rem}
+.tech-label{font-family:var(--font-mono);font-size:.85rem;letter-spacing:.03em;color:var(--paper)}
+@media (prefers-reduced-motion: reduce){.tech-track{animation:none}}
 
 /* ---------- Experience ---------- */
 .exp-list{display:flex;flex-direction:column}
@@ -284,8 +297,14 @@ a{color:inherit;text-decoration:none}
           </div>
           <p class="section-note">The stack this architecture is built and maintained on.</p>
         </div>
-        <div class="skills-grid" data-reveal>
-          <div v-for="s in data.skills" :key="s" class="skill-chip" v-html="s"></div>
+      </div>
+      <div class="tech-marquee" data-reveal>
+        <div class="tech-track" :style="{animationDuration: marqueeDuration}">
+          <div v-for="(s,i) in doubledSkills" :key="i" class="tech-item">
+            <i v-if="skillIcon(s)" :class="skillIcon(s)+' tech-icon'"></i>
+            <i v-else class="bi bi-cpu tech-icon tech-icon--fallback"></i>
+            <span class="tech-label" v-html="s"></span>
+          </div>
         </div>
       </div>
     </section>
@@ -390,7 +409,41 @@ a{color:inherit;text-decoration:none}
 <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
 <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
 <script>
-const { createApp, ref, onMounted, nextTick } = Vue;
+const { createApp, ref, computed, onMounted, nextTick } = Vue;
+
+// Map a skill's plain-text name to a devicon class. Falls back to a
+// generic icon (bi-cpu) in the template when nothing matches, so
+// unrecognized stack items still render cleanly in the marquee.
+const ICON_MAP = {
+  'aws':'devicon-amazonwebservices-plain-wordmark colored','amazon web services':'devicon-amazonwebservices-plain-wordmark colored',
+  'kubernetes':'devicon-kubernetes-plain colored','k8s':'devicon-kubernetes-plain colored',
+  'terraform':'devicon-terraform-plain colored','docker':'devicon-docker-plain colored',
+  'node':'devicon-nodejs-plain colored','vue':'devicon-vuejs-plain colored',
+  'react':'devicon-react-original colored','angular':'devicon-angularjs-plain colored',
+  'postgres':'devicon-postgresql-plain colored','mysql':'devicon-mysql-plain colored',
+  'mongodb':'devicon-mongodb-plain colored','redis':'devicon-redis-plain colored',
+  'kafka':'devicon-apachekafka-original colored','rabbitmq':'devicon-rabbitmq-original colored',
+  'python':'devicon-python-plain colored','java':'devicon-java-plain colored',
+  'javascript':'devicon-javascript-plain colored','typescript':'devicon-typescript-plain colored',
+  'go':'devicon-go-original-wordmark colored','golang':'devicon-go-original-wordmark colored',
+  'git':'devicon-git-plain colored','github':'devicon-github-original',
+  'azure':'devicon-azure-plain colored','gcp':'devicon-googlecloud-plain colored','google cloud':'devicon-googlecloud-plain colored',
+  'jenkins':'devicon-jenkins-line colored','linux':'devicon-linux-plain',
+  'bash':'devicon-bash-plain colored','graphql':'devicon-graphql-plain colored',
+  'nginx':'devicon-nginx-original colored','ansible':'devicon-ansible-plain colored',
+  'jira':'devicon-jira-plain colored','ci/cd':'devicon-circleci-plain colored',
+  'html':'devicon-html5-plain colored','css':'devicon-css3-plain colored',
+  'php':'devicon-php-plain colored','c#':'devicon-csharp-plain colored','.net':'devicon-dotnetcore-plain colored',
+  'ruby':'devicon-ruby-plain colored','swift':'devicon-swift-plain colored',
+  'elasticsearch':'devicon-elasticsearch-plain colored','grafana':'devicon-grafana-plain colored',
+  'prometheus':'devicon-prometheus-original colored','vault':'devicon-vault-plain colored',
+  'rust':'devicon-rust-original','flutter':'devicon-flutter-plain colored'
+};
+function skillIcon(raw){
+  const clean = String(raw).replace(/<[^>]+>/g,'').trim().toLowerCase();
+  for(const key in ICON_MAP){ if(clean.includes(key)) return ICON_MAP[key]; }
+  return null;
+}
 
 createApp({
   setup(){
@@ -399,6 +452,15 @@ createApp({
     const navOpen = ref(false);
     const scrolled = ref(false);
     const heroReady = ref(false);
+
+    // Duplicate the list once so the track can loop seamlessly at -50%,
+    // and scale animation speed to the item count so it never feels
+    // rushed with a short stack or sluggish with a long one.
+    const doubledSkills = computed(() => {
+      const s = data.value.skills || [];
+      return [...s, ...s];
+    });
+    const marqueeDuration = computed(() => (Math.max(data.value.skills?.length || 6, 4) * 3) + 's');
 
     const calculateDuration = (s,e) => {
       if(!s || s.toLowerCase()==='present') return "";
@@ -525,9 +587,9 @@ createApp({
       requestAnimationFrame(()=> heroReady.value = true);
     }
 
-    return { data, loading, navOpen, scrolled, heroReady, calculateDuration, generatePDF, cleanSkills, cleanText };
+    return { data, loading, navOpen, scrolled, heroReady, calculateDuration, generatePDF, cleanSkills, cleanText, doubledSkills, marqueeDuration, skillIcon };
   }
 }).mount('#app');
 </script>
 </body>
-</html>
+      </html>
