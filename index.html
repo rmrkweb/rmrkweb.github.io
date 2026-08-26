@@ -564,7 +564,7 @@ createApp({
     };
     const cleanText = t => t ? t.replace(/<br\s*\/?>/gi,'\n').replace(/<\/?[^>]+(>|$)/g,"") : "";
     const cleanSkills = s => s ? s.map(i=>i.replace(/<\/?[^>]+(>|$)/g,"")).join(" • ") : "";
-    const generatePDF = () => window.print();
+    const generatePDF = () => window.print(); 
 
     // ---- Contact form ----
     const CONTACT_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw6u-s4S7WWI4iMCPUa7dC26so_dDQF6or7dB3ST177aJTxmYWND3V0BovqyMIuVg4xrQ/exec";
