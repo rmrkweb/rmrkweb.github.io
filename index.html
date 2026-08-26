@@ -445,8 +445,7 @@ a{color:inherit;text-decoration:none}
               <textarea id="cf-message" v-model="contactForm.message" required></textarea>
             </div>
 
-            <div class="g-recaptcha" data-sitekey="6Lc5xJktAAAAAJT1eft4LLphIwGIWNE-NBXMbiN3"></div>
-
+        
             <button type="submit" class="btn btn-solid" :disabled="contactForm.sending">
               <i class="bi" :class="contactForm.sending ? 'bi-hourglass-split' : 'bi-send'"></i>
               {{ contactForm.sending ? 'Sending…' : 'Send Message' }}
@@ -499,6 +498,7 @@ a{color:inherit;text-decoration:none}
 
 <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
 <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6Lc5xJktAAAAAJT1eft4LLphIwGIWNE-NBXMbiN3"></script>
 <script>
 const { createApp, ref, computed, onMounted, nextTick } = Vue;
 
@@ -581,11 +581,12 @@ createApp({
     });
 
     async function submitContactForm(){
-      const token = window.grecaptcha ? window.grecaptcha.getResponse() : "";
-      if(!token){
-        contactForm.value.statusMsg = "Please verify you're not a robot.";
-        return;
-      }
+      const token = await grecaptcha.execute(
+    '6Lc5xJktAAAAAJT1eft4LLphIwGIWNE-NBXMbiN3',
+    { action: 'contact_form' }
+  );
+
+
       contactForm.value.sending = true;
       contactForm.value.statusMsg = "Sending…";
       try{
