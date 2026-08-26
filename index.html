@@ -12,6 +12,7 @@
   gtag('js', new Date());
   gtag('config', 'G-GM7L425MDL');
 </script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@5.4.55/css/materialdesignicons.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devicon@2.15.1/devicon.min.css">
@@ -226,6 +227,35 @@ a{color:inherit;text-decoration:none}
 .acc-tag{font-family:var(--font-mono);font-size:.68rem;color:var(--blueprint);border:1px solid var(--blueprint-dim);padding:3px 8px;border-radius:20px;white-space:nowrap}
 .acc-desc{color:var(--graphite);font-size:.9rem;margin:0}
 
+/* ---------- Contact form ---------- */
+.contact-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:56px}
+@media (max-width:768px){.contact-grid{grid-template-columns:1fr}}
+.contact-intro-note{color:var(--graphite);font-size:.95rem;line-height:1.7;max-width:380px}
+.contact-intro-note strong{color:var(--paper);font-weight:500}
+.field{margin-bottom:20px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media (max-width:560px){.field-row{grid-template-columns:1fr}}
+.field label{
+  display:block;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--graphite);margin-bottom:8px;
+}
+.field input,.field select,.field textarea{
+  width:100%;background:var(--surface);border:1px solid var(--line);border-radius:2px;
+  padding:13px 14px;color:var(--paper);font-family:var(--font-body);font-size:.94rem;
+  transition:border-color .3s ease;
+}
+.field select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8'><path d='M1 1l5 5 5-5' stroke='%238b93a0' stroke-width='1.5' fill='none'/></svg>");background-repeat:no-repeat;background-position:right 14px center}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--blueprint)}
+.field textarea{resize:vertical;min-height:130px}
+.g-recaptcha{margin-bottom:22px;transform-origin:left top}
+.contact-status{
+  font-family:var(--font-mono);font-size:.78rem;letter-spacing:.04em;margin-top:16px;min-height:18px;
+}
+.contact-status.is-success{color:var(--blueprint)}
+.contact-status.is-error{color:#e07a5f}
+.contact-status.is-pending{color:var(--graphite)}
+.btn[disabled]{opacity:.5;cursor:not-allowed;pointer-events:none}
+
 /* ---------- Footer ---------- */
 .footer{border-top:1px solid var(--line);padding:56px 0 40px}
 .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
@@ -283,7 +313,7 @@ a{color:inherit;text-decoration:none}
           <a :href="data.facebook" target="_blank" class="btn"><i class="bi bi-facebook"></i> Facebook</a>
         </div>
       </div>
-      <div class="scroll-cue"><span class="line"></span> Scroll — Sheet 01 of 04</div>
+      <div class="scroll-cue"><span class="line"></span> Scroll — Sheet 01 of 05</div>
     </section>
 
     <!-- SKILLS -->
@@ -366,9 +396,70 @@ a{color:inherit;text-decoration:none}
         </div>
       </div>
     </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="sheet">
+      <span class="sheet-index mono">SHEET 05 — REQUEST FOR INFORMATION</span>
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <div>
+            <div class="eyebrow">Get in touch</div>
+            <h2 class="section-title">Start a <em>Conversation</em></h2>
+          </div>
+          <p class="section-note">Roles, projects, or just a technical chat — drop a line below.</p>
+        </div>
+
+        <div class="contact-grid" data-reveal>
+          <p class="contact-intro-note">
+            <strong>Open to opportunities</strong> in solutions architecture, cloud infrastructure,
+            and platform engineering. Fill out the specification on the right and it'll land
+            directly in my inbox.
+          </p>
+
+          <form id="contactForm" @submit.prevent="submitContactForm">
+            <div class="field-row">
+              <div class="field">
+                <label for="cf-name">Full Name</label>
+                <input id="cf-name" type="text" v-model="contactForm.name" required>
+              </div>
+              <div class="field">
+                <label for="cf-email">Email</label>
+                <input id="cf-email" type="email" v-model="contactForm.email" required>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="cf-type">Inquiry Type</label>
+              <select id="cf-type" v-model="contactForm.inquiryType" required>
+                <option value="" disabled>— Select —</option>
+                <option value="Job Opportunity">Job Opportunity</option>
+                <option value="Freelance Project">Freelance Project</option>
+                <option value="Collaboration">Collaboration</option>
+                <option value="General Question">General Question</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="cf-message">Message</label>
+              <textarea id="cf-message" v-model="contactForm.message" required></textarea>
+            </div>
+
+            <div class="g-recaptcha" data-sitekey="6Lc5xJktAAAAAJT1eft4LLphIwGIWNE-NBXMbiN3"></div>
+
+            <button type="submit" class="btn btn-solid" :disabled="contactForm.sending">
+              <i class="bi" :class="contactForm.sending ? 'bi-hourglass-split' : 'bi-send'"></i>
+              {{ contactForm.sending ? 'Sending…' : 'Send Message' }}
+            </button>
+
+            <p class="contact-status" :class="contactStatusClass">{{ contactForm.statusMsg }}</p>
+          </form>
+        </div>
+      </div>
+    </section>
   </div>
 
-  <footer class="footer" id="contact">
+  <footer class="footer">
     <div class="wrap footer-inner">
       <div class="footer-links">
         <a v-for="info in data.contactInfo" :key="info.contact" :href="info.link" target="_blank"><i :class="'mdi '+info.icon"></i></a>
@@ -474,6 +565,59 @@ createApp({
     const cleanText = t => t ? t.replace(/<br\s*\/?>/gi,'\n').replace(/<\/?[^>]+(>|$)/g,"") : "";
     const cleanSkills = s => s ? s.map(i=>i.replace(/<\/?[^>]+(>|$)/g,"")).join(" • ") : "";
     const generatePDF = () => window.print();
+
+    // ---- Contact form ----
+    const CONTACT_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw6u-s4S7WWI4iMCPUa7dC26so_dDQF6or7dB3ST177aJTxmYWND3V0BovqyMIuVg4xrQ/exec";
+
+    const contactForm = ref({
+      name:"", email:"", inquiryType:"", message:"",
+      sending:false, statusMsg:""
+    });
+    const contactStatusClass = computed(() => {
+      const m = contactForm.value.statusMsg;
+      if(!m) return "";
+      if(contactForm.value.sending) return "is-pending";
+      return (m.toLowerCase().includes("thanks") || m.toLowerCase().includes("sent")) ? "is-success" : "is-error";
+    });
+
+    async function submitContactForm(){
+      const token = window.grecaptcha ? window.grecaptcha.getResponse() : "";
+      if(!token){
+        contactForm.value.statusMsg = "Please verify you're not a robot.";
+        return;
+      }
+      contactForm.value.sending = true;
+      contactForm.value.statusMsg = "Sending…";
+      try{
+        const res = await fetch(CONTACT_SCRIPT_URL, {
+          method:"POST",
+          body: JSON.stringify({
+            name: contactForm.value.name,
+            email: contactForm.value.email,
+            inquiryType: contactForm.value.inquiryType,
+            message: contactForm.value.message,
+            recaptchaToken: token
+          }),
+          headers: { "Content-Type":"text/plain" }
+        });
+        const result = await res.json();
+        if(result.result === "success"){
+          contactForm.value.statusMsg = "Message sent — thanks for reaching out!";
+          contactForm.value.name = "";
+          contactForm.value.email = "";
+          contactForm.value.inquiryType = "";
+          contactForm.value.message = "";
+          if(window.grecaptcha) window.grecaptcha.reset();
+        } else {
+          contactForm.value.statusMsg = "Something went wrong: " + (result.message || "please try again.");
+        }
+      }catch(err){
+        console.error(err);
+        contactForm.value.statusMsg = "Error sending message. Please try again.";
+      }finally{
+        contactForm.value.sending = false;
+      }
+    }
 
     onMounted(async () => {
       window.addEventListener('scroll', () => { scrolled.value = window.scrollY > 40; });
@@ -587,9 +731,14 @@ createApp({
       requestAnimationFrame(()=> heroReady.value = true);
     }
 
-    return { data, loading, navOpen, scrolled, heroReady, calculateDuration, generatePDF, cleanSkills, cleanText, doubledSkills, marqueeDuration, skillIcon };
+    return {
+      data, loading, navOpen, scrolled, heroReady,
+      calculateDuration, generatePDF, cleanSkills, cleanText,
+      doubledSkills, marqueeDuration, skillIcon,
+      contactForm, contactStatusClass, submitContactForm
+    };
   }
 }).mount('#app');
 </script>
 </body>
-      </html>
+</html>
