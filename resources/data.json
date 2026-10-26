@@ -92,7 +92,13 @@
   "id": 6,
   "title": "Introspectus Enterprise Assurance",
   "description": "Architected and managed the frontend of an Australian enterprise assurance platform. Developed integrated modules for cybersecurity posture, productivity monitoring, and software analytics, providing real-time evidence-based insights."
-}
+      
+},
+    {
+"id": 7,
+"title": "aMACEzing Sales — Multi-Business Android Application",
+"description": "Designed and developed a native Android sales monitoring application using Kotlin, Jetpack Compose, Material 3, and Room. Built features for multi-business management, sales and profit tracking, transaction monitoring, quotation and receipt generation, and cloud synchronization, helping small business owners manage their operations through a free, accessible mobile solution."
+    }
 
   ],
   "contactDes": "I am always open to discussing technical partnerships, new ventures, or innovative commissions. Let's connect:",
