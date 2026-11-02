@@ -407,7 +407,7 @@ a{color:inherit;text-decoration:none}
         <div class="acc-body">
           <div class="acc-top">
             <h4 class="acc-title">{{item.title}}</h4>
-            <span v-if="calculateDuration(item.startDate,item.endDate)?.length)" class="acc-tag mono">{{calculateDuration(item.startDate,item.endDate)}}</span>
+            <span v-if="calculateDuration(item.startDate,item.endDate)?.length" class="acc-tag mono">{{calculateDuration(item.startDate,item.endDate)}}</span>
           </div>
           <p class="acc-desc">{{item.description}}</p>
           <div v-if="validLinks(item).length" class="acc-links">
