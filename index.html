@@ -623,7 +623,7 @@ createApp({
       window.addEventListener('scroll', () => { scrolled.value = window.scrollY > 40; });  
   
       try {  
-        const res = await fetch('./resources/data.json');  
+        const res = await fetch('./resources/data.json',{ cache: 'no-cache' });  
         data.value = await res.json();  
       } catch(err){  
         console.error(err);  
