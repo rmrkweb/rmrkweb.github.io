@@ -97,7 +97,13 @@
     {
 "id": 7,
 "title": "aMACEzing Sales — Multi-Business Android and Web Application",
-"description": "Designed and developed a cross-platform sales monitoring solution with a native Android app (Kotlin, Jetpack Compose, Material 3, Room) and an installable web app (React, TypeScript), synchronized in real time through Firebase. Built features for multi-business management, sales and profit tracking, transaction monitoring, quotation and receipt generation, and offline-capable cloud synchronization, helping small business owners manage their operations through a free, accessible solution on both phone and computer."
+"description": "Designed and developed a cross-platform sales monitoring solution with a native Android app (Kotlin, Jetpack Compose, Material 3, Room) and an installable web app (React, TypeScript), synchronized in real time through Firebase. Built features for multi-business management, sales and profit tracking, transaction monitoring, quotation and receipt generation, and offline-capable cloud synchronization, helping small business owners manage their operations through a free, accessible solution on both phone and computer.",
+ "startDate": "2026-10",
+  "endDate": "Present",
+  "links": [
+    { "label": "Read Me", "url": "https://github.com/rmrkweb/aMACEzing-Sales/blob/main/README.md", "type":"article"},{"label": "Android App", "url": "https://github.com/rmrkweb/aMACEzing-Sales/releases/latest"},
+    { "label": "Web App", "url": "https://rmrkweb.github.io/amacezing-sales-web/"}
+  ]
     }
 
   ],
