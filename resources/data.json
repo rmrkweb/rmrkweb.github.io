@@ -104,6 +104,17 @@
     { "label": "Read Me", "url": "https://github.com/rmrkweb/aMACEzing-Sales/blob/main/README.md", "type":"article"},{"label": "Android App", "url": "https://github.com/rmrkweb/aMACEzing-Sales/releases/latest"},
     { "label": "Web App", "url": "https://rmrkweb.github.io/amacezing-sales-web/"}
   ]
+    },
+    {
+  "id": 8,
+  "title": "aMACEzing ID Photo Maker — Privacy-First Passport, Visa and ID Photo Web App",
+  "description": "Designed and developed an installable Progressive Web App (React, TypeScript, Vite, Tailwind CSS) that creates passport, visa and ID photos entirely in the browser, with no uploads or accounts. Built features for official country size presets and custom dimensions, head and eye alignment guides, client-side background removal and replacement, portrait adjustments, multi-photo print sheet generation, and JPEG, PNG and PDF export, with projects saved locally through IndexedDB and automated deployment to GitHub Pages through GitHub Actions.",
+  "startDate": "2026-11",
+  "endDate": "Present",
+  "links": [
+    { "label": "Read Me", "url": "https://github.com/rmrkweb/id-photo-maker/blob/main/README.md", "type": "article" },
+    { "label": "Web App", "url": "https://rmrkweb.github.io/id-photo-maker/" }
+  ]
     }
 
   ],
