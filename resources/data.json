@@ -112,7 +112,7 @@
   "startDate": "2026-11",
   "endDate": "Present",
   "links": [
-    { "label": "Read Me", "url": "https://github.com/rmrkweb/id-photo-maker/blob/main/README.md", "type": "article" },
+    { "label": "Read Me", "url": "https://github.com/rmrkweb/id-photo-maker/blob/gh-pages/README.md", "type": "article" },
     { "label": "Web App", "url": "https://rmrkweb.github.io/id-photo-maker/" }
   ]
     }
